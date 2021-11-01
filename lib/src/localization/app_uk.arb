@@ -2,5 +2,7 @@
   "appTitle": "Мета персона",
   "@appTitle": {
     "description": "Мета персона"
-  }
+  },
+
+  "settings": "Налаштування"
 }

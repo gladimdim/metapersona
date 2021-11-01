@@ -8,11 +8,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// you'd like to store settings on a web server, use the http package.
 class SettingsService {
 
-  final String _themeMode = "themeMode";
-
+  final String _themeKey = "themeMode";
+  final String _localeKey = "locale";
   Future<ThemeMode> themeMode() async {
     final instance = await SharedPreferences.getInstance();
-    final mode = instance.getString(_themeMode);
+    final mode = instance.getString(_themeKey);
     if (mode == null) {
       return ThemeMode.system;
     } else {
@@ -26,6 +26,20 @@ class SettingsService {
     // Use the shared_preferences package to persist settings locally or the
     // http package to persist settings over the network.
     final instance = await SharedPreferences.getInstance();
-    instance.setString(_themeMode, theme.name);
+    await instance.setString(_themeKey, theme.name);
+  }
+
+  Future<void> updateLocale(Locale newLocale) async {
+
+    final instance = await SharedPreferences.getInstance();
+    await instance.setString(_localeKey, newLocale.languageCode);
+  }
+
+  Future<Locale> readLocale() async {
+
+    final instance = await SharedPreferences.getInstance();
+    final localeString = instance.getString(_localeKey);
+    return Locale(localeString ?? "en");
+
   }
 }
