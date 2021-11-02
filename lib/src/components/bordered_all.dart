@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 
 class BorderedAll extends StatelessWidget {
   final double width;
-  final Color color;
   final Widget child;
 
   const BorderedAll(
-      {this.width = 3.0, this.color = Colors.black, required this.child});
+      {this.width = 3.0, required this.child});
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).primaryColor;
     return BorderedContainerWithSides(
       child: child,
       width: width,
-      color: color,
-      borderDirections: [
+      color: Colors.white,
+      borderDirections: const [
         AxisDirection.down,
         AxisDirection.up,
         AxisDirection.left,

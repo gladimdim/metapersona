@@ -3,6 +3,6 @@
   "@appTitle": {
     "description": "Мета персона"
   },
-
-  "settings": "Налаштування"
+  "settings": "Налаштування",
+  "profilePageTitle": "Профіль"
 }

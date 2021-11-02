@@ -11,9 +11,11 @@ class BorderedBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).primaryColor;
     return BorderedContainerWithSides(
       child: child,
-      borderDirections:[AxisDirection.down],
+      color: color,
+      borderDirections: const [AxisDirection.down],
     );
   }
 }

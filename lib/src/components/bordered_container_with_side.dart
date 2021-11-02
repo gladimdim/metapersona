@@ -12,11 +12,7 @@ class BorderedContainerWithSides extends StatelessWidget {
     required this.child,
     List<AxisDirection>? borderDirections,
   }) {
-    if (borderDirections == null) {
-      this.borderDirections = [AxisDirection.up];
-    } else {
-      this.borderDirections = borderDirections;
-    }
+    this.borderDirections = borderDirections ?? [AxisDirection.up];
   }
 
   Map<AxisDirection, BorderSide> get _sidesForDirection {
