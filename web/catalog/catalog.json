@@ -2,7 +2,24 @@
   "posts": [
     {
       "id": "dead_simple_example_using_keys",
-      "title": "Dead Simple Example of Using Keys in Flutter Widgets"
+      "title": "Dead Simple Example of Using Keys in Flutter Widgets",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2021-10-02",
+      "tags": ["flutter", "dart"]
+    },
+    {
+      "id": "retro_of_my_3_years",
+      "title": "A Retro of My Last 3 Years",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2021-09-12",
+      "tags": ["flutter", "dart"]
+    },
+    {
+      "id": "flutter_animate_interactive_viewer_as_map",
+      "title": "Flutter: how to animate movement of InteractiveViewer from one point to another on a Map",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2021-10-02",
+      "tags": ["flutter", "dart"]
     }
   ]
 }

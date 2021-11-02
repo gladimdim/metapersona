@@ -22,7 +22,7 @@ class CatalogView extends StatelessWidget {
             return ListView(
               children: catalog.posts
                   .map(
-                    (e) => GestureDetector(
+                    (e) => InkWell(
                       onTap: () => onListItemClicked(e, context),
                       child: CatalogListItemView(postItem: e),
                     ),

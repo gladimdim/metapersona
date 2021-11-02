@@ -12,35 +12,40 @@ class PostView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("View Post"),
-      ),
-      body: FutureBuilder(
-        future: Post.fromIdUrl(getRootUrlPrefix() + routeNamePrefix, postId),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done &&
-              snapshot.hasData) {
-            final Post post = snapshot.data as Post;
-            return Markdown(
+    return FutureBuilder(
+      future: Post.fromIdUrl(getRootUrlPrefix() + routeNamePrefix, postId),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done &&
+            snapshot.hasData) {
+          final Post post = snapshot.data as Post;
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(post.title),
+            ),
+            body: Markdown(
               onTapLink: (text, link, title) async {
                 if (link == null) {
                   return;
                 }
                 await launch(link);
               },
-              data: post.markdownContent,
-            );
-          } else {
-            return Column(
+              data: "# ${post.title}\n" + post.markdownContent,
+            ),
+          );
+        } else {
+          return Scaffold( appBar: AppBar(
+            title: Text("Loading"),
+          ),
+
+            body: Column(
               children: [
                 const Text("Loading"),
                 const CircularProgressIndicator(),
               ],
-            );
-          }
-        },
-      ),
+            ),
+          );
+        }
+      },
     );
   }
 }
