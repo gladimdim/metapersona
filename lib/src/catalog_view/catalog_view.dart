@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:metapersona/src/catalog_view/catalog_list_item_view.dart';
-import 'package:metapersona/src/posts/post.dart';
+import 'package:metapersona/src/posts/catalog.dart';
+import 'package:metapersona/src/utils.dart';
 
 class CatalogView extends StatelessWidget {
   const CatalogView({Key? key}) : super(key: key);
-  static const String routeName = "/catalog";
+  static String routeName = "/catalog";
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class CatalogView extends StatelessWidget {
         title: Text("All posts"),
       ),
       body: FutureBuilder(
-        future: Catalog.initFromUrl("./"),
+        future: Catalog.initFromUrl(getRootUrlPrefix()),
         builder: (context, data) {
           if (data.connectionState == ConnectionState.done && data.hasData) {
             final Catalog catalog = data.data as Catalog;
@@ -23,7 +24,7 @@ class CatalogView extends StatelessWidget {
                   .map(
                     (e) => GestureDetector(
                       onTap: () => onListItemClicked(e, context),
-                      child: CatalogListItemView(post: e),
+                      child: CatalogListItemView(postItem: e),
                     ),
                   )
                   .toList(),
@@ -36,7 +37,8 @@ class CatalogView extends StatelessWidget {
     );
   }
 
-  void onListItemClicked(Post post, BuildContext context) {
-    Navigator.restorablePushNamed(context, "${CatalogView.routeName}/posts/${post.markdownContentUrl}");
+  void onListItemClicked(CatalogPostItem post, BuildContext context) {
+    Navigator.restorablePushNamed(
+        context, "${CatalogView.routeName}/posts/${post.id}");
   }
 }

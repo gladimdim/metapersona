@@ -5,32 +5,31 @@ import 'package:http/http.dart' as http;
 class Post {
   final String id;
   final String title;
-  final String markdownContentUrl;
+  final String markdownContent;
 
   const Post({
     required this.id,
-    required this.markdownContentUrl,
     required this.title,
+    required this.markdownContent
   });
 
-  static Post fromJson(Map<String, dynamic> input) {
-    return Post(title: input["title"], markdownContentUrl: input["markdownContentUrl"], id: input["id"]);
-  }
 
-  String get relativeContentUrl => "$id/$markdownContentUrl";
-}
-
-class Catalog {
-  final List<Post> posts;
-
-  const Catalog({required this.posts});
-
-  static Future<Catalog> initFromUrl(String url) async {
-    final response = await http.get(Uri.parse("$url/catalog/catalog.json"));
+  static Future<String> contentFromId(String rootUrl, String id) async {
+    final response = await http.get(Uri.parse("$rootUrl$id/content.md"));
     final body = response.body;
-    final parsedBody = jsonDecode(body);
-    final List jsonPosts = parsedBody["posts"] as List;
-    final List<Post> posts = jsonPosts.map((e) => Post.fromJson(e)).toList();
-    return Catalog(posts: posts);
+    return body;
   }
+
+  static Future<Post> fromIdUrl(String rootUrl, String id) async {
+    final mdContent = await contentFromId(rootUrl, id);
+    final responsePost = await http.get(Uri.parse("$rootUrl$id/post.json"));
+    final responseJson = jsonDecode(responsePost.body);
+    return Post(
+      id: responseJson["id"],
+      title: responseJson["title"],
+      markdownContent: mdContent,
+    );
+  }
+
 }
+

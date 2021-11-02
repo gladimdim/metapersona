@@ -50,22 +50,25 @@ class MyApp extends StatelessWidget {
           // Flutter web url navigation and deep linking.
           onGenerateRoute: (RouteSettings routeSettings) {
             return MaterialPageRoute<void>(
-              settings: routeSettings,
-              builder: (BuildContext context) {
-                switch (routeSettings.name) {
-                  case SettingsView.routeName:
+                settings: routeSettings,
+                builder: (BuildContext context) {
+                  if (routeSettings.name!.indexOf(PostView.routeNamePrefix) ==
+                      0) {
+                    final split =
+                        routeSettings.name!.split(PostView.routeNamePrefix)[1];
+                    return PostView(postId: split);
+                  }
+                  if (routeSettings.name == SettingsView.routeName) {
                     return SettingsView(controller: settingsController);
-                  case MainProfileView.routeName:
+                  }
+                  if (MainProfileView.routeName == routeSettings.name) {
                     return const MainProfileView();
-                  case CatalogView.routeName:
+                  }
+                  if (CatalogView.routeName == routeSettings.name) {
                     return const CatalogView();
-                  case PostView.routeNamePrefix:
-                    return PostView(postUrl: "catalog/posts/dead_simple_example_using_keys/",);
-                  default:
-                    return const MainProfileView();
-                }
-              },
-            );
+                  }
+                  return const MainProfileView();
+                });
           },
         );
       },
