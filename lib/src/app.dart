@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:metapersona/src/main_view/main_profile_view.dart';
 import 'package:metapersona/src/posts/post.dart';
 import 'package:metapersona/src/posts/post_view.dart';
 
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
       animation: settingsController,
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           restorationScopeId: 'metapersona',
           localizationsDelegates: const [
             AppLocalizations.delegate,
@@ -57,8 +59,8 @@ class MyApp extends StatelessWidget {
                     return SettingsView(controller: settingsController);
                   case SampleItemDetailsView.routeName:
                     return const SampleItemDetailsView();
-                  case SampleItemListView.routeName:
-                    return const SampleItemListView();
+                  case MainProfileView.routeName:
+                    return const MainProfileView();
                   case PostView.routeNamePrefix:
                     return PostView(post: firstArticle);
                   default:
