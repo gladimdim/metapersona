@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:metapersona/src/components/bordered_bottom.dart';
-import 'package:metapersona/src/posts/post_view.dart';
-import 'package:metapersona/src/settings/settings_view.dart';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:metapersona/src/catalog_view/catalog_view.dart';
+import 'package:metapersona/src/components/bordered_bottom.dart';
+import 'package:metapersona/src/settings/settings_view.dart';
 
 class MainProfileView extends StatelessWidget {
   static const String routeName = "/";
@@ -75,6 +74,6 @@ class MainProfileView extends StatelessWidget {
 
   void _viewMyPostsPressed(BuildContext context) {
 
-    Navigator.restorablePushNamed(context, PostView.routeNamePrefix);
+    Navigator.restorablePushNamed(context, CatalogView.routeName);
   }
 }

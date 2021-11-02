@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:metapersona/src/catalog_view/catalog_view.dart';
 import 'package:metapersona/src/main_view/main_profile_view.dart';
-import 'package:metapersona/src/posts/post.dart';
 import 'package:metapersona/src/posts/post_view.dart';
 
 import 'settings/settings_controller.dart';
@@ -57,8 +57,10 @@ class MyApp extends StatelessWidget {
                     return SettingsView(controller: settingsController);
                   case MainProfileView.routeName:
                     return const MainProfileView();
+                  case CatalogView.routeName:
+                    return const CatalogView();
                   case PostView.routeNamePrefix:
-                    return PostView(post: firstArticle);
+                    return PostView(postUrl: "catalog/posts/dead_simple_example_using_keys/",);
                   default:
                     return const MainProfileView();
                 }
