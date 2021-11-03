@@ -4,5 +4,7 @@
     "description": "Мета персона"
   },
   "settings": "Налаштування",
-  "profilePageTitle": "Профіль"
+  "profilePageTitle": "Профіль",
+  "experienceSummaryText": "Flutter Розробник 💙. 8 років JavaScript. 3 роки з Flutter :)",
+  "viewMyArticles": "Переглянути мої статті"
 }

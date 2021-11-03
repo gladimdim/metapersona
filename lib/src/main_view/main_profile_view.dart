@@ -47,9 +47,20 @@ class MainProfileView extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Dmytro Gladkyi",
-                        style: Theme.of(context).textTheme.headline6,
+                      child: Column(
+                        children: [
+                          Text(
+                            "Dmytro Gladkyi",
+                            style: Theme.of(context).textTheme.headline4,
+                          ),
+                          Text(
+                              "Flutter Developer 💙 since 2018",
+                            style: Theme.of(context).textTheme.subtitle1,
+                          ),Text(
+                              "JavaScript developer since 2012",
+                            style: Theme.of(context).textTheme.subtitle1,
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -60,7 +71,7 @@ class MainProfileView extends StatelessWidget {
                 child: ElevatedButton(
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text("View my posts", style: Theme.of(context).textTheme.headline6,),
+                    child: Text(AppLocalizations.of(context)!.viewMyArticles),
                   ),
                   onPressed: () => _viewMyPostsPressed(context),
                 ),
