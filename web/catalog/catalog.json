@@ -16,10 +16,17 @@
     },
     {
       "id": "flutter_animate_interactive_viewer_as_map",
-      "title": "Flutter: how to animate movement of InteractiveViewer from one point to another on a Map",
+      "title": "Flutter: How to Animate Movement of InteractiveViewer From One Point to Another on a Map",
       "thumbnail": "thumbnail.png",
       "dateAdded": "2021-10-02",
-      "tags": ["flutter", "dart"]
+      "tags": ["flutter", "dart", "animation"]
+    },
+    {
+      "id": "flutter_animate_interactive_viewer_fly_over_the_map",
+      "title": "Animating InteractiveViewer in Flutter. Or how to animate Map in your Game.",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2021-05-01",
+      "tags": ["flutter", "dart", "animation"]
     }
   ]
 }
