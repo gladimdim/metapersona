@@ -6,5 +6,6 @@
   "settings": "Settings",
   "profilePageTitle": "Profile Page",
   "experienceSummaryText": "Flutter Developer 💙. 8 years with JavaScript. 3 Years with Flutter :)",
-  "viewMyArticles": "View my articles"
+  "viewMyArticles": "My articles",
+  "viewShortPosts": "Short posts"
 }

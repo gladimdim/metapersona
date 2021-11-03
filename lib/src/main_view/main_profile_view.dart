@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:metapersona/src/catalog_view/catalog_view.dart';
 import 'package:metapersona/src/components/bordered_bottom.dart';
+import 'package:metapersona/src/components/main_view_card_item.dart';
 import 'package:metapersona/src/settings/settings_view.dart';
 
 class MainProfileView extends StatelessWidget {
@@ -54,10 +55,11 @@ class MainProfileView extends StatelessWidget {
                             style: Theme.of(context).textTheme.headline4,
                           ),
                           Text(
-                              "Flutter Developer 💙 since 2018",
+                            "Flutter Developer 💙 since 2018",
                             style: Theme.of(context).textTheme.subtitle1,
-                          ),Text(
-                              "JavaScript developer since 2012",
+                          ),
+                          Text(
+                            "JavaScript developer since 2012",
                             style: Theme.of(context).textTheme.subtitle1,
                           ),
                         ],
@@ -66,15 +68,28 @@ class MainProfileView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(AppLocalizations.of(context)!.viewMyArticles),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: MainMenuCardItem(
+                        text: AppLocalizations.of(context)!.viewMyArticles,
+                        onPress: () => _viewMyPostsPressed(context),
+                      ),
+                    ),
                   ),
-                  onPressed: () => _viewMyPostsPressed(context),
-                ),
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: MainMenuCardItem(
+                        text: AppLocalizations.of(context)!.viewShortPosts,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -84,7 +99,6 @@ class MainProfileView extends StatelessWidget {
   }
 
   void _viewMyPostsPressed(BuildContext context) {
-
     Navigator.restorablePushNamed(context, CatalogView.routeName);
   }
 }
