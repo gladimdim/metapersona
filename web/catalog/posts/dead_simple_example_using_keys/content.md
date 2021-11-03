@@ -10,7 +10,7 @@ Jump directly to [DartPad example](https://dartpad.dev/?id=116f0f3b5f3937698bb33
 
 In my game  [Chumaki](http://locadeserta.com/locadesertachumaki/index_en.html) I wanted to animate the NPC level up by showing a growing widget with a text "New Level", like this:
 
-![level_up.gif](https://cdn.hashnode.com/res/hashnode/image/upload/v1633201317894/vft_HwDaC.gif)
+![animation.gif](animation.gif)
 
 ## Widget implementation
 

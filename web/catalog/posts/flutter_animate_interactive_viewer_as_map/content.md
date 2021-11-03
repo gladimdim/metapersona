@@ -2,18 +2,18 @@ In my game called  ["Loca Deserta: Chumaki"](http://locadeserta.com/index_en.htm
 
 Different cities are shown on it like this:
 
-![Screenshot_20210606-111616.jpg](https://cdn.hashnode.com/res/hashnode/image/upload/v1622967457323/E3Ztd4ki5.jpeg)
+![screen1.jpg](screen_1.jpeg)
 
 To help navigate the map I decided to add following feature: player should be able to navigate to another city with a button press.
 
 Say like here, to unlock the city you must buy the route to it in another city:
 
-![Untitled.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1622989483835/DpXdKXA4L.png)
+![Untitled.png](screen_2.png)
 
 And it should nicely animate to the other part of the map, with target City in center:
 
 
-![ezgif-2-9d2b382b1f0b.gif](https://cdn.hashnode.com/res/hashnode/image/upload/v1622987732013/qqCfyVq_n.gif)
+![ezgif-2-9d2b382b1f0b.gif](animation.gif)
 
 
 [In my previous post I've shown how to use AnimationController](https://gladimdim.org/animating-interactiveviewer-in-flutter-or-how-to-animate-map-in-your-game) to move from one hardcoded point to another point on a map when the game starts. But in this case we have to react to user action and nicely move the current viewport to the other city.

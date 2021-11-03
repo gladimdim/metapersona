@@ -29,14 +29,16 @@ class PostView extends StatelessWidget {
                 }
                 await launch(link);
               },
+              selectable: true,
               data: "# ${post.title}\n" + post.markdownContent,
+              imageDirectory: getRootUrlPrefix() + routeNamePrefix + postId,
             ),
           );
         } else {
-          return Scaffold( appBar: AppBar(
-            title: Text("Loading"),
-          ),
-
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(postId),
+            ),
             body: Column(
               children: [
                 const Text("Loading"),
