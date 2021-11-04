@@ -34,35 +34,41 @@ class MainProfileView extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(45),
-                        ),
-                        child: Image.asset(
-                          "assets/images/profile/green_round_avatar.jpg",
-                          width: 128,
+                    Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(45),
+                          ),
+                          child: Image.asset(
+                            "assets/images/profile/green_round_avatar.jpg",
+                            width: 128,
+                          ),
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            "Dmytro Gladkyi",
-                            style: Theme.of(context).textTheme.headline4,
-                          ),
-                          Text(
-                            "Flutter Developer 💙 since 2018",
-                            style: Theme.of(context).textTheme.subtitle1,
-                          ),
-                          Text(
-                            "JavaScript developer since 2012",
-                            style: Theme.of(context).textTheme.subtitle1,
-                          ),
-                        ],
+                    Expanded(
+                      flex: 5,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              "Dmytro Gladkyi",
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                            Text(
+                              "Flutter Developer 💙 since 2018",
+                              style: Theme.of(context).textTheme.subtitle1,
+                            ),
+                            Text(
+                              "JavaScript developer since 2012",
+                              style: Theme.of(context).textTheme.subtitle1,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
