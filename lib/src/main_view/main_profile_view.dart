@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:metapersona/src/catalog_view/catalog_view.dart';
 import 'package:metapersona/src/components/bordered_bottom.dart';
 import 'package:metapersona/src/components/main_view_card_item.dart';
+import 'package:metapersona/src/experience/experience_page.dart';
 import 'package:metapersona/src/settings/settings_view.dart';
 
 class MainProfileView extends StatelessWidget {
@@ -97,6 +98,14 @@ class MainProfileView extends StatelessWidget {
                   ),
                 ],
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: MainMenuCardItem(
+                  text: AppLocalizations.of(context)!.viewExperiencePage,
+                  onPress: () => _viewExperience(context),
+                ),
+              ),
+
             ],
           ),
         ),
@@ -104,7 +113,12 @@ class MainProfileView extends StatelessWidget {
     );
   }
 
+
   void _viewMyPostsPressed(BuildContext context) {
     Navigator.restorablePushNamed(context, CatalogView.routeName);
+  }
+
+  void _viewExperience(BuildContext context) {
+    Navigator.restorablePushNamed(context, ExperiencePage.routeName);
   }
 }

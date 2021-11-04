@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class PostView extends StatelessWidget {
   static String routeNamePrefix = "/catalog/posts/";
+  static String postsPath = "catalog/posts/";
   final String postId;
 
   const PostView({Key? key, required this.postId}) : super(key: key);
@@ -13,7 +14,7 @@ class PostView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Post.fromIdUrl(getRootUrlPrefix() + routeNamePrefix, postId),
+      future: Post.fromIdUrl(getRootUrlPrefix() + postsPath, postId),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
@@ -31,7 +32,7 @@ class PostView extends StatelessWidget {
               },
               selectable: true,
               data: "# ${post.title}\n" + post.markdownContent,
-              imageDirectory: getRootUrlPrefix() + routeNamePrefix + postId,
+              imageDirectory: getRootUrlPrefix() + postsPath + postId,
             ),
           );
         } else {

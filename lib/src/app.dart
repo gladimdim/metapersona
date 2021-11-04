@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:metapersona/src/catalog_view/catalog_view.dart';
+import 'package:metapersona/src/experience/experience_page.dart';
 import 'package:metapersona/src/main_view/main_profile_view.dart';
 import 'package:metapersona/src/posts/post_view.dart';
 
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({
+class MetaPersonaApp extends StatelessWidget {
+  const MetaPersonaApp({
     Key? key,
     required this.settingsController,
   }) : super(key: key);
@@ -66,6 +67,9 @@ class MyApp extends StatelessWidget {
                   }
                   if (CatalogView.routeName == routeSettings.name) {
                     return const CatalogView();
+                  }
+                  if (ExperiencePage.routeName == routeSettings.name) {
+                    return const ExperiencePage();
                   }
                   return const MainProfileView();
                 });
