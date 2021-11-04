@@ -1,0 +1,58 @@
+{
+  "companies": [
+    {
+      "name": "SAP"
+    },
+    {
+      "name": "Zoomdata"
+    },
+    {
+      "name": "Globallogic"
+    },
+    {
+      "name": "Visiprise"
+    }
+  ],
+  "positions": [
+    {
+      "date": "2018-12-01",
+      "text": "Senior Software Engineer",
+      "company": "SAP"
+    },
+    {
+      "date": "2015-12-01",
+      "text": "Senior JavaScript Developer",
+      "company": "Zoomdata"
+    },
+    {
+      "date": "2015-06-01",
+      "text": "Development Team Lead",
+      "company": "SAP"
+    },
+    {
+      "date": "2013-05-01",
+      "text": "Software Developer",
+      "company": "SAP"
+    },
+    {
+      "date": "2012-04-01",
+      "text": "Senior Software Test Engineer",
+      "company": "SAP"
+    },
+    {
+      "date": "2008-10-01",
+      "text": "Software Test Engineer",
+      "company": "SAP"
+    },
+    {
+      "date": "2007-12-01",
+      "text": "Software Test Engineer at Visiprise (bought by SAP)",
+      "company": "Visiprise"
+    },
+    {
+      "date": "2006-06-01",
+      "text": "Software Test Engineer",
+      "company": "Globallogic"
+    }
+  ]
+}

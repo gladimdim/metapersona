@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:metapersona/src/experience/experience.dart';
 import 'package:timelines/timelines.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class ExperiencePage extends StatelessWidget {
    static const String routeName = "/experience";
   const ExperiencePage({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class ExperiencePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Professional Experience"),
+        title: Text(AppLocalizations.of(context)!.viewExperiencePage),
       ),
       body: Timeline.tileBuilder(
         builder: TimelineTileBuilder.connected(
