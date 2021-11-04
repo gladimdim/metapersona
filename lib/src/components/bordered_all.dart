@@ -14,7 +14,7 @@ class BorderedAll extends StatelessWidget {
     return BorderedContainerWithSides(
       child: child,
       width: width,
-      color: Colors.white,
+      color: color,
       borderDirections: const [
         AxisDirection.down,
         AxisDirection.up,
