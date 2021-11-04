@@ -8,7 +8,7 @@ class Catalog {
   const Catalog({required this.posts});
 
   static Future<Catalog> initFromUrl(String url) async {
-    final response = await http.get(Uri.parse("$url/catalog/catalog.json"));
+    final response = await http.get(Uri.parse("${url}catalog/catalog.json"));
     final body = response.body;
     final parsedBody = jsonDecode(body);
     final List jsonPosts = parsedBody["posts"] as List;
@@ -24,7 +24,7 @@ class CatalogPostItem {
   final List<String> tags;
 
   String? getFullThumbnail() {
-    return thumbnail == null ? null : "${getRootUrlPrefix()}/catalog/posts/$id/$thumbnail";
+    return thumbnail == null ? null : "${getRootUrlPrefix()}catalog/posts/$id/$thumbnail";
   }
 
   const CatalogPostItem({
