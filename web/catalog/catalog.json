@@ -27,6 +27,13 @@
       "thumbnail": "thumbnail.png",
       "dateAdded": "2021-05-01",
       "tags": ["flutter", "dart", "animation"]
+    },
+    {
+      "id": "locadeserta_sloboda_whatsnew_305",
+      "title": "Дике Поле: Слобода. Що нового у версії 3.0.5?",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2021-01-01"
     }
   ]
 }
