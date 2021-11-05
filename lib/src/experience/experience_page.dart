@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:metapersona/src/experience/Position.dart';
+import 'package:metapersona/src/experience/position.dart';
 import 'package:metapersona/src/utils.dart';
 import 'package:timelines/timelines.dart';
 
