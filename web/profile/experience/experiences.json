@@ -13,41 +13,57 @@
       "name": "Visiprise"
     }
   ],
+  "summary": {
+    "technologies": {
+      "JavaScript": 8,
+      "SAPUI5": 5,
+      "ReasonML": 2,
+      "Flutter": 3,
+      "Dart": 4
+    }
+  },
   "positions": [
     {
       "date": "2018-12-01",
       "text": "Senior Software Engineer",
-      "company": "SAP"
+      "company": "SAP",
+      "technologies": "JavaScript, Flutter, SAPUI5"
     },
     {
       "date": "2015-12-01",
       "text": "Senior JavaScript Developer",
-      "company": "Zoomdata"
+      "company": "Zoomdata",
+      "technologies": "JavaScript, ReasonML, React, Backbone"
     },
     {
       "date": "2015-06-01",
       "text": "Development Team Lead",
-      "company": "SAP"
+      "company": "SAP",
+      "technologies": "JavaScript, SAPUI5/OpenUI5"
     },
     {
       "date": "2013-05-01",
       "text": "Software Developer",
-      "company": "SAP"
+      "company": "SAP",
+      "technologies": "JavaScript, SAPUI5"
     },
     {
       "date": "2012-04-01",
       "text": "Senior Software Test Engineer",
-      "company": "SAP"
+      "company": "SAP",
+      "technologies": "Manufacturing Execution"
     },
     {
       "date": "2008-10-01",
       "text": "Software Test Engineer",
-      "company": "SAP"
+      "company": "SAP",
+      "technologies": "Manufacturing Execution"
     },
     {
       "date": "2007-12-01",
-      "text": "Software Test Engineer at Visiprise (bought by SAP)",
-      "company": "Visiprise"
+      "text": "Software Test Engineer at Visiprise",
+      "company": "Visiprise",
+      "technologies": "Manufacturing Execution"
     },
     {
       "date": "2006-06-01",

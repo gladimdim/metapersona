@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:metapersona/src/experience/experience.dart';
+import 'package:metapersona/src/experience/Position.dart';
 import 'package:metapersona/src/utils.dart';
 import 'package:timelines/timelines.dart';
 
@@ -29,8 +29,8 @@ class ExperiencePage extends StatelessWidget {
             var positions = json["positions"] as List;
             List<Company> companies =
                 companyJson.map((e) => Company.fromJson(e)).toList();
-            List<Experience> experiences = positions
-                .map((e) => Experience.fromJson(e, companies))
+            List<Position> experiences = positions
+                .map((e) => Position.fromJson(e, companies))
                 .toList();
             return Timeline.tileBuilder(
               builder: TimelineTileBuilder.connected(
@@ -64,9 +64,24 @@ class ExperiencePage extends StatelessWidget {
                             index, experiences, context),
                       ),
                   contentsBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(24.0),
-                      child: Text(experiences[index].text),
+                    return Card(
+                      elevation: 10,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              experiences[index].text,
+                              style: Theme.of(context).textTheme.subtitle1,
+                            ),
+                            if (experiences[index].technologies != null) Text(
+                              experiences[index].technologies!,
+                              style: Theme.of(context).textTheme.caption,
+                            ),
+                          ],
+                        ),
+                      ),
                     );
                   }),
             );
@@ -79,13 +94,14 @@ class ExperiencePage extends StatelessWidget {
   }
 
   Future<Map<String, dynamic>> _fetchExperience() async {
-    final response = await http.get(Uri.parse("${getRootUrlPrefix()}profile/experience/experiences.json"));
+    final response = await http.get(
+        Uri.parse("${getRootUrlPrefix()}profile/experience/experiences.json"));
     final body = response.body;
     return jsonDecode(body);
   }
 
   _getTimelineNodeForCompany(
-      int index, List<Experience> positions, BuildContext context) {
+      int index, List<Position> positions, BuildContext context) {
     final company = positions[index].company;
     final nextDate = index == 0 ? DateTime.now() : positions[index - 1].date;
     final diff = nextDate.millisecondsSinceEpoch -
@@ -97,15 +113,18 @@ class ExperiencePage extends StatelessWidget {
       ),
       child: Card(
         elevation: 5,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              company.name,
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            Text(_timeDiffToString(durationDiff)),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                company.name,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              Text(_timeDiffToString(durationDiff)),
+            ],
+          ),
         ),
       ),
     );
