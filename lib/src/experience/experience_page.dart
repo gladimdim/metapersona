@@ -29,9 +29,8 @@ class ExperiencePage extends StatelessWidget {
             var positions = json["positions"] as List;
             List<Company> companies =
                 companyJson.map((e) => Company.fromJson(e)).toList();
-            List<Position> experiences = positions
-                .map((e) => Position.fromJson(e, companies))
-                .toList();
+            List<Position> experiences =
+                positions.map((e) => Position.fromJson(e, companies)).toList();
             return Timeline.tileBuilder(
               builder: TimelineTileBuilder.connected(
                   contentsAlign: ContentsAlign.basic,
@@ -51,42 +50,46 @@ class ExperiencePage extends StatelessWidget {
                             ),
                           ),
                           startConnector: index == 0
-                              ? DashedLineConnector()
-                              : SolidLineConnector(),
-                          endConnector: SolidLineConnector(),
+                              ? const DashedLineConnector()
+                              : const SolidLineConnector(),
+                          endConnector: const SolidLineConnector(),
                         ),
                       ),
                   connectorBuilder: (context, index, type) =>
-                      SolidLineConnector(),
+                      const SolidLineConnector(),
                   oppositeContentsBuilder: (context, index) => Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: _getTimelineNodeForCompany(
                             index, experiences, context),
                       ),
                   contentsBuilder: (context, index) {
-                    return Card(
-                      elevation: 10,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              experiences[index].text,
-                              style: Theme.of(context).textTheme.subtitle1,
-                            ),
-                            if (experiences[index].technologies != null) Text(
-                              experiences[index].technologies!,
-                              style: Theme.of(context).textTheme.caption,
-                            ),
-                          ],
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        elevation: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                experiences[index].text,
+                                style: Theme.of(context).textTheme.subtitle1,
+                              ),
+                              if (experiences[index].technologies != null)
+                                Text(
+                                  experiences[index].technologies!,
+                                  style: Theme.of(context).textTheme.caption,
+                                ),
+                            ],
+                          ),
                         ),
                       ),
                     );
                   }),
             );
           } else {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),
