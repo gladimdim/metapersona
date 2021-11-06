@@ -5,48 +5,86 @@
       "title": "Dead Simple Example of Using Keys in Flutter Widgets",
       "thumbnail": "thumbnail.png",
       "dateAdded": "2021-10-02",
-      "tags": ["flutter", "dart"]
+      "tags": [
+        "flutter",
+        "dart"
+      ]
     },
     {
       "id": "retro_of_my_3_years",
       "title": "A Retro of My Last 3 Years",
       "thumbnail": "thumbnail.png",
       "dateAdded": "2021-09-12",
-      "tags": ["flutter", "dart"]
+      "tags": [
+        "flutter",
+        "dart"
+      ]
     },
     {
       "id": "flutter_animate_interactive_viewer_as_map",
       "title": "Flutter: How to Animate Movement of InteractiveViewer From One Point to Another on a Map",
       "thumbnail": "thumbnail.png",
       "dateAdded": "2021-10-02",
-      "tags": ["flutter", "dart", "animation"]
+      "tags": [
+        "flutter",
+        "dart",
+        "animation"
+      ]
     },
     {
       "id": "flutter_animate_interactive_viewer_fly_over_the_map",
       "title": "Animating InteractiveViewer in Flutter. Or how to animate Map in your Game.",
       "thumbnail": "thumbnail.png",
       "dateAdded": "2021-05-01",
-      "tags": ["flutter", "dart", "animation"]
+      "tags": [
+        "flutter",
+        "dart",
+        "animation"
+      ]
     },
     {
       "id": "locadeserta_sloboda_whatsnew_305",
       "title": "Дике Поле: Слобода. Що нового у версії 3.0.5?",
       "author": "Dmytro Gladkyi",
       "thumbnail": "thumbnail.png",
-      "dateAdded": "2021-01-01"
+      "dateAdded": "2021-01-01",
+      "tags": [
+        "Слобода",
+        "Ігри"
+      ]
     },
     {
       "id": "sloboda_3_update",
       "title": "Слобода 3.0: мапа Війська Запорозького",
       "author": "Dmytro Gladkyi",
       "thumbnail": "thumbnail.png",
-      "dateAdded": "2020-12-19"
-    },    {
+      "dateAdded": "2020-12-19",
+      "tags": [
+        "Слобода",
+        "Ігри"
+      ]
+    },
+    {
       "id": "flutter_fog_of_war",
       "title": "Fog of War in Flutter Game",
       "author": "Dmytro Gladkyi",
       "thumbnail": "thumbnail.jpg",
-      "dateAdded": "2020-12-01"
+      "dateAdded": "2020-12-01",
+      "tags": [
+        "games",
+        "flutter"
+      ]
+    },
+    {
+      "id": "sloboda_versiya-290-doslidzhennya",
+      "title": "Слобода 2.9.0: Дослідження!",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2020-11-17",
+      "tags": [
+        "Слобода",
+        "Ігри"
+      ]
     }
   ]
 }
