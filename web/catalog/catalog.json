@@ -41,6 +41,12 @@
       "author": "Dmytro Gladkyi",
       "thumbnail": "thumbnail.png",
       "dateAdded": "2020-12-19"
+    },    {
+      "id": "flutter_fog_of_war",
+      "title": "Fog of War in Flutter Game",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.jpg",
+      "dateAdded": "2020-12-01"
     }
   ]
 }
