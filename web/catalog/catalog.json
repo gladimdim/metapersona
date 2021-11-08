@@ -85,6 +85,17 @@
         "Слобода",
         "Ігри"
       ]
+    },
+    {
+      "id": "sloboda_versiya_285_update",
+      "title": "Версія 2.8.5: нові вироби, вози, оновлений арт, зміни в продуктових ланцюгах",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2020-11-10",
+      "tags": [
+        "Слобода",
+        "Ігри"
+      ]
     }
   ]
 }
