@@ -8,5 +8,7 @@
   "experienceSummaryText": "Flutter Developer 💙. 8 years with JavaScript. 3 Years with Flutter :)",
   "viewMyArticles": "My articles",
   "viewShortPosts": "Short posts",
-  "viewExperiencePage": "Professional Experience"
+  "viewExperiencePage": "Professional Experience",
+  "labelLoading": "Loading",
+  "labelAllPosts": "All Posts"
 }

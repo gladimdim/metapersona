@@ -6,6 +6,7 @@ import 'package:metapersona/src/utils.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class PostView extends StatelessWidget {
   static String routeNamePrefix = "/catalog/posts/";
   static String postsPath = "catalog/posts/";
@@ -48,7 +49,7 @@ class PostView extends StatelessWidget {
             ),
             body: Column(
               children: [
-                const Text("Loading"),
+                Text(AppLocalizations.of(context)!.labelLoading),
                 const CircularProgressIndicator(),
               ],
             ),

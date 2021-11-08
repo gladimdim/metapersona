@@ -4,6 +4,7 @@ import 'package:metapersona/src/catalog_view/catalog_list_item_view.dart';
 import 'package:metapersona/src/posts/catalog.dart';
 import 'package:metapersona/src/utils.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class CatalogView extends StatelessWidget {
   const CatalogView({Key? key}) : super(key: key);
   static String routeName = "/catalog";
@@ -12,7 +13,7 @@ class CatalogView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("All posts"),
+        title: Text(AppLocalizations.of(context)!.labelAllPosts),
       ),
       body: FutureBuilder(
         future: Catalog.initFromUrl(getRootUrlPrefix()),
