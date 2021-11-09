@@ -16,7 +16,7 @@ To solve this problem I decided to add in-game notifications.
 The in-game notifications must:
 
 - show player that something happen
-- be dismissable
+- be dismissible
 - do not clutter the screen
 - do not spam the player
 - game developer should be able to show different notifications for different events.
