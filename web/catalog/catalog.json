@@ -120,6 +120,16 @@
         "flutter",
         "dart"
       ]
+    },
+    {
+      "id": "flutter_in_game_notifications",
+      "title": "Add in-game Notifications to Flutter Game",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.jpg",
+      "tags": [
+        "flutter",
+        "dart"
+      ]
     }
   ]
 }
