@@ -126,10 +126,17 @@
       "title": "Add in-game Notifications to Flutter Game",
       "author": "Dmytro Gladkyi",
       "thumbnail": "thumbnail.jpg",
+      "dateAdded": "2020-10-13",
       "tags": [
         "flutter",
         "dart"
       ]
+    },
+    {
+      "id": "flutter_add_sound_to_game",
+      "title": "Adding Sound to Flutter Game.",
+      "dateAdded": "2021-09-22",
+      "tags": ["flutter", "dart"]
     }
   ]
 }

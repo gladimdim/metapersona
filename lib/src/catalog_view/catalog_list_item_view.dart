@@ -15,9 +15,12 @@ class CatalogListItemView extends StatelessWidget {
         elevation: 10.0,
         child: Row(
           children: [
-            Expanded(
-                flex: 1,
-                child: Image.network("${postItem.getFullThumbnail()}")),
+            postItem.thumbnail == null
+                ? Container()
+                : Expanded(
+                    flex: 1,
+                    child: Image.network("${postItem.getFullThumbnail()}"),
+                  ),
             Expanded(
               flex: 5,
               child: Padding(
@@ -34,10 +37,12 @@ class CatalogListItemView extends StatelessWidget {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children: postItem.tags.map((e) => Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Chip(label: Text(e)),
-                        )).toList(),
+                        children: postItem.tags
+                            .map((e) => Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Chip(label: Text(e)),
+                                ))
+                            .toList(),
                       )
                     ],
                   ),

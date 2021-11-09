@@ -4,6 +4,7 @@
   "markdownContentUrl": "content.md",
   "author": "Dmytro Gladkyi",
   "thumbnail": "thumbnail.jpg",
+  "dateAdded": "2020-10-13",
   "tags": [
     "flutter",
     "dart"
