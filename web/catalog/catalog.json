@@ -137,6 +137,54 @@
       "title": "Adding Sound to Flutter Game.",
       "dateAdded": "2021-09-22",
       "tags": ["flutter", "dart"]
+    },
+    {
+      "id": "flutter_generation_and_render_2d_map_part4",
+      "title": "Generation and Render of 2D Map with Terrain in Dart + Flutter. (De)Serialization of Generated Map. Part 4.",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2020-09-14",
+      "tags": [
+        "flutter",
+        "dart"
+      ]
+    },
+    {
+      "id": "flutter_generation_and_render_2d_map_part3",
+      "title": "Generation and Render of 2D Map with Terrain in Dart + Flutter. Adding Lakes. Part 3",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2020-09-12",
+      "tags": [
+        "flutter",
+        "dart",
+        "gamedev"
+      ]
+    },
+    {
+      "id": "flutter_generation_and_render_2d_map_part2",
+      "title": "Generation and Render of 2D Map with Terrain in Dart + Flutter. Adding Forest Spots. Part 2",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2020-09-12",
+      "tags": [
+        "flutter",
+        "dart",
+        "gamedev"
+      ]
+    },
+    {
+      "id": "flutter_generation_and_render_2d_map_part1",
+      "title": "Generation and Render of 2D Map with Terrain in Dart + Flutter. Part 1.",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.png",
+      "markdownContentUrl": "content.md",
+      "dateAdded": "2020-09-09",
+      "tags": [
+        "flutter",
+        "dart",
+        "gamedev"
+      ]
     }
   ]
 }

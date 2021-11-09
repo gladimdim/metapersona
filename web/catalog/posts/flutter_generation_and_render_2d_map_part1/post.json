@@ -1,0 +1,13 @@
+{
+  "id": "flutter_generation_and_render_2d_map_part1",
+  "title": "Generation and Render of 2D Map with Terrain in Dart + Flutter. Part 1.",
+  "author": "Dmytro Gladkyi",
+  "thumbnail": "thumbnail.png",
+  "markdownContentUrl": "content.md",
+  "dateAdded": "2020-09-09",
+  "tags": [
+    "flutter",
+    "dart",
+    "gamedev"
+  ]
+}
