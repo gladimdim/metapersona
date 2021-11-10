@@ -1,0 +1,8 @@
+{
+  "id": "sloboda_dizajn-ta-realizaciya-mehanizmu-podij-v-pokrokovij-gri",
+  "title": "\uD83C\uDDFA\uD83C\uDDE6Дизайн та реалізація механізму подій в покроковій грі \"Слобода\"",
+  "thumbnail": "thumbnail.jpg",
+  "dateAdded": "2020-03-25",
+  "tags": ["flutter", "dart", "prophecy", "epic"],
+  "markdownContentUrl": "content.md"
+}
