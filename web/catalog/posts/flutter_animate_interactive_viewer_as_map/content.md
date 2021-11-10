@@ -16,7 +16,7 @@ And it should nicely animate to the other part of the map, with target City in c
 ![ezgif-2-9d2b382b1f0b.gif](animation.gif)
 
 
-[In my previous post I've shown how to use AnimationController](https://gladimdim.org/animating-interactiveviewer-in-flutter-or-how-to-animate-map-in-your-game) to move from one hardcoded point to another point on a map when the game starts. But in this case we have to react to user action and nicely move the current viewport to the other city.
+[In my previous post I've shown how to use AnimationController](https://dmytrogladkyi.com/#/catalog/posts/flutter_animate_interactive_viewer_fly_over_the_map) to move from one hardcoded point to another point on a map when the game starts. But in this case we have to react to user action and nicely move the current viewport to the other city.
 
 The technical solution for such feature is split into different tasks:
 

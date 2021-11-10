@@ -6,12 +6,12 @@ class BorderedContainerWithSides extends StatelessWidget {
   final Widget child;
   late final List<AxisDirection> borderDirections;
 
-  BorderedContainerWithSides({
+  BorderedContainerWithSides({Key? key,
     this.width = 3.0,
     this.color = Colors.black,
     required this.child,
     List<AxisDirection>? borderDirections,
-  }) {
+  }): super(key: key) {
     this.borderDirections = borderDirections ?? [AxisDirection.up];
   }
 

@@ -20,15 +20,15 @@
 
 Наприклад, ресурс "Поле" генерує їжу, для виробництва необхідно лише 3 вільних людей:
 
-![9553b9babf583e78f11670f3e76e3d1d.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1594666303841/-TRHsocHK.png)
+![9553b9babf583e78f11670f3e76e3d1d.png](screen1.png)
 
 Коли час на виконання задачі закінчився, можна зібрати ресурси до інвентаря:
 
-![a5c9fa668f31320df37ef3d2c482904c.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1594666391111/_YoMGFH97.png)
+![a5c9fa668f31320df37ef3d2c482904c.png](screen2.png)
 
 Може бути запущено багато задач на одній з ресурсних будівлях:
 
-![d1a8953de1f37c13617dac739f224cec.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1594666466982/yiuj0CVOw.png)
+![d1a8953de1f37c13617dac739f224cec.png](screen3.png)
 
 ## Вимоги до функціоналу
 
@@ -49,7 +49,7 @@
 # Імплементація
 ## Спочатку імплементуємо клас Taskable, який буде єдиним класом для всіх задач.
 
-![Annotation 2020-07-13 151732.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1594642668499/MXMYRn_lq.png)
+![Annotation 2020-07-13 151732.png](screen4.png)
 
 Він має додаткову властивість **bool isStarted**, яка визначає чи задача уже почала своє виконання.
 
@@ -57,11 +57,11 @@
 
 Метод **start** розпочинає виконання задачі:
 
-![Annotation 2020-07-13 151821.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1594642742208/1gmdbHWqs.png)
+![Annotation 2020-07-13 151821.png](screen5.png)
 
 І не забуваємо підчищяти за собою таймери і потоки:
 
-![destroy.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1594642754715/GzXt137GG.png)
+![destroy.png](screen6.png)
 
 ## Імплепентація роботи із задачами в класі ResourceBuilding
 
@@ -69,18 +69,18 @@
 
 Для початку додамо наступний новий клас RTResourceTask. Він розширяє клас зі списком задач і потоком. В цей потік будуть кидаться повідомлення, якщо задача виконана. Це буде місток між UI, будівлею і задачами в ній:
 
-![Annotation 2020-07-13 151953.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1594642808615/jlLOM0scB.png)
+![Annotation 2020-07-13 151953.png](screen7.png)
 
 **Taskable defaultTask** буде визначатися кожною будівлею окремо. Це буде шаблон для створення задачі, коли гравець натисне кнопку «Почати задачу».
 
 Приклад стандартної задачі для Будинку Мисливця:
 
-![Annotation 2020-07-13 152044.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1594642864917/QTejQiz1I.png)
+![Annotation 2020-07-13 152044.png](screen8.png)
 
 Тепер кожен раз, коли додається задача до будівлі, потік зі змінами в статусі задачі додається до потоку змін будівлі. І за допомогою **StreamBuilder** віджета можна оновлювати стан виконання задач на екрані:
 
 
-![Annotation 2020-07-13 152213.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1594642945945/swRP16aS3.png)
+![Annotation 2020-07-13 152213.png](screen9.png)
 
 # Заключення
 

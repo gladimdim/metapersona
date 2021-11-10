@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:metapersona/src/utils.dart';
 class Catalog {
@@ -44,7 +45,7 @@ class CatalogPostItem {
     try {
       date = DateTime.parse(dateAddedRaw);
     } catch (e) {
-      print("Could not parse dateAdded: $dateAddedRaw for post ${input["id"]}");
+      debugPrint("Could not parse dateAdded: $dateAddedRaw for post ${input["id"]}");
     }
     return CatalogPostItem(title: input["title"], id: input["id"], thumbnail: input["thumbnail"], tags: tags, dateAdded: date);
   }

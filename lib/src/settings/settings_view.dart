@@ -48,7 +48,7 @@ class SettingsView extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Select language"),
+              const Text("Select language"),
               DropdownButton<Locale>(
                 // Read the selected themeMode from the controller
                 value: controller.locale,

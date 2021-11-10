@@ -15,8 +15,6 @@ class Post {
 
 
   static Future<String> contentFromId(String rootUrl, String id) async {
-    print("rootUrl: $rootUrl");
-    print("$rootUrl$id/content.md");
     final response = await http.get(Uri.parse("$rootUrl$id/content.md"));
     final utfString = utf8.decode(response.bodyBytes);
     return utfString;

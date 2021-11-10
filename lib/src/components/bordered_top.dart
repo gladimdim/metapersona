@@ -7,13 +7,13 @@ class BorderedTop extends StatelessWidget {
   final Widget child;
 
   const BorderedTop(
-      {this.width = 3.0, this.color = Colors.black, required this.child});
+      {Key? key, this.width = 3.0, this.color = Colors.black, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BorderedContainerWithSides(
       child: child,
-      borderDirections: [AxisDirection.up],
+      borderDirections: const [AxisDirection.up],
     );
   }
 }

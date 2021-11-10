@@ -199,6 +199,20 @@
         "Ігри",
         "Слобода"
       ]
+    },
+    {
+      "id": "flutter_design-and-implementation-of-event-system",
+      "title": "Design and Implementation of Event System in City Building Turn Based Game in Dart+Flutter",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2020-04-24",
+      "tags": ["flutter", "dart", "gamedev"]
+    },
+    {
+      "id": "sloboda_dizajn-ta-realizaciya-mehanizmu-podij-v-pokrokovij-gri",
+      "title": "\uD83C\uDDFA\uD83C\uDDE6Дизайн та реалізація механізму подій в покроковій грі \"Слобода\"",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2020-03-25",
+      "tags": ["flutter", "dart", "gamedev", "Слобода", "Ігри"]
     }
   ]
 }

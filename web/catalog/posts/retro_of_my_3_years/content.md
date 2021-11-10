@@ -1,6 +1,6 @@
 The second post on my site:
 
-https://gladimdim.org/do-not-quit-or-how-i-resurrected-my-7-years-old-idea** was 2 years ago.**
+https://dmytrogladkyi.com/#/catalog/posts/do-not-quit-or-how-i-resurrected-my-7-years-old-idea was 2 years ago.
 
 It was a time when I finally decided to stop wasting time (having three kids just forces you to do that, each 'free' minute is not spent on tiktok/yt shorts or nextflix, but is truly dedicated to something meaningful to me) and resurrected my dream: create a game about Ukraine in XVII century (cossacks time).
 

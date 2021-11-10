@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:metapersona/src/catalog_view/catalog_list_item_view.dart';
 import 'package:metapersona/src/posts/catalog.dart';
 import 'package:metapersona/src/utils.dart';
-
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class CatalogView extends StatelessWidget {
   const CatalogView({Key? key}) : super(key: key);
   static String routeName = "/catalog";
@@ -31,7 +29,7 @@ class CatalogView extends StatelessWidget {
                   .toList(),
             );
           } else {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
         },
       ),
