@@ -185,6 +185,20 @@
         "dart",
         "gamedev"
       ]
+    },
+    {
+      "id": "sloboda_dizajn-ta-implementaciya-igrovoyi-mehaniki",
+      "title": "\uD83C\uDDFA\uD83C\uDDE6 Дизайн та імплементація ігрової механіки на основі задач в грі \"Дике Поле: Слобода\"",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2020-07-13",
+      "tags": [
+        "flutter",
+        "dart",
+        "gamedev",
+        "Ігри",
+        "Слобода"
+      ]
     }
   ]
 }

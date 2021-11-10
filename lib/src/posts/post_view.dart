@@ -34,18 +34,23 @@ class PostView extends StatelessWidget {
                     onPressed: () => _sharePost(post), icon: Icon(Icons.share)),
               ],
             ),
-            body: FutureBuilder(
-              future: flutterMarkdown.loadLibrary(),
-              builder: (context, data) => flutterMarkdown.Markdown(
-                onTapLink: (text, link, title) async {
-                  if (link == null) {
-                    return;
-                  }
-                  await launch(link);
-                },
-                selectable: true,
-                data: "# ${post.title}\n" + post.markdownContent,
-                imageDirectory: getRootUrlPrefix() + postsPath + postId,
+            body: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints.tightFor(width: 960),
+                child: FutureBuilder(
+                  future: flutterMarkdown.loadLibrary(),
+                  builder: (context, data) => flutterMarkdown.Markdown(
+                    onTapLink: (text, link, title) async {
+                      if (link == null) {
+                        return;
+                      }
+                      await launch(link);
+                    },
+                    selectable: true,
+                    data: "# ${post.title}\n" + post.markdownContent,
+                    imageDirectory: getRootUrlPrefix() + postsPath + postId,
+                  ),
+                ),
               ),
             ),
           );
