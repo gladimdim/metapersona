@@ -25,7 +25,7 @@ The technical solution for such feature is split into different tasks:
 
 # Animate InteractiveViewer to zoom + pan to the other City
 
-You can read my  [previous post](https://gladimdim.org/animating-interactiveviewer-in-flutter-or-how-to-animate-map-in-your-game) which has detailed description on how to use AnimatedBuilder with Matrix4Tween. In this post I will focus on how to get current Matrix4 value of the InteractiveViewer and use it as a starting point in animation. **(All the variables, widget code, etc is taken from that post).**
+You can read my  [previous post](https://dmytrogladkyi.com/#/catalog/posts/flutter_animate_interactive_viewer_fly_over_the_map) which has detailed description on how to use AnimatedBuilder with Matrix4Tween. In this post I will focus on how to get current Matrix4 value of the InteractiveViewer and use it as a starting point in animation. **(All the variables, widget code, etc is taken from that post).**
 
 Why do we need it? Player does not necessarily position city in the center of the screen and for sure player can zoom in/out the Widget which changes the scale. We should animate movement from any of these combinations to the final destination (another City on a map).
 

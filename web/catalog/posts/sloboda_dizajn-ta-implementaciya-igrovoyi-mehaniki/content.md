@@ -1,4 +1,4 @@
-Ви уже могли читати першу статтю в моїй серії імплементацій ігрових механік:  [Дизайн та реалізація механізму подій в покроковій грі](https://gladimdim.org/dizajn-ta-realizaciya-mehanizmu-podij-v-pokrokovij-gri-sloboda-ck87f463p006vlfs1pb18szhf) . В цій же статті я покажу дизайн та імплементацію ігрової механіки на основі задач, яку я зробив в своїй грі  [Слобода](https://locadeserta.com/sloboda). Вихідний код гри знаходиться на GitHub:  [https://github.com/gladimdim/sloboda
+Ви уже могли читати першу статтю в моїй серії імплементацій ігрових механік:  [Дизайн та реалізація механізму подій в покроковій грі](https://dmytrogladkyi.com/#/catalog/posts/sloboda_dizajn-ta-realizaciya-mehanizmu-podij-v-pokrokovij-gri) . В цій же статті я покажу дизайн та імплементацію ігрової механіки на основі задач, яку я зробив в своїй грі  [Слобода](https://locadeserta.com/sloboda). Вихідний код гри знаходиться на GitHub:  [https://github.com/gladimdim/sloboda
 ](https://github.com/gladimdim/sloboda)
 # В чому різниця між покровою грою і грою із задачами?
 

@@ -516,4 +516,4 @@ Generated map looks like this:
 We used a grid to represent a map structure. For river we used **LinkedList** as it maps one to one to the river in physical world (a directed flow). Each tile knows how to render itself as a widget. We don't have to create a separate Widget class that renders input data. Instead we used input data to render itself. This is very different from what is told to you by FP folks. But, as for me, when I have an object that represents a map tile, it makes more sense for me to ask that object to render itself as a **Widget**. Or, as called in Smalltalk: we send a message to object to give us its View. Instead of creating a function like renderMapTileAsWidget(MapTile tile) that uses switch case to jump to different widgets.
 
 # Next Part 2.
-[In next part we will add more type of terrains: Forest and Camp. ](https://gladimdim.org/generation-and-render-of-2d-map-with-terrain-in-dart-flutter-adding-forest-spots-part-2-ckezep5c401fztrs1g2x5gibk) 
+[In next part we will add more type of terrains: Forest and Camp. ](https://dmytrogladkyi.com/#/catalog/posts/flutter_generation_and_render_2d_map_part2) 
