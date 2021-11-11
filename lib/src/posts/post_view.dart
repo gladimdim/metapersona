@@ -29,9 +29,11 @@ class PostView extends StatelessWidget {
               title: Text(post.title),
               actions: [
                 IconButton(
-                    onPressed: () => _copyLink(post), icon: const Icon(Icons.copy)),
+                    onPressed: () => _copyLink(post),
+                    icon: const Icon(Icons.copy)),
                 IconButton(
-                    onPressed: () => _sharePost(post), icon: const Icon(Icons.share)),
+                    onPressed: () => _sharePost(post),
+                    icon: const Icon(Icons.share)),
               ],
             ),
             body: Center(

@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 class BorderedAll extends StatelessWidget {
   final double width;
   final Widget child;
-
+  final Color? color;
   const BorderedAll(
-      {Key? key, this.width = 3.0, required this.child}): super(key: key);
+      {Key? key, this.width = 3.0, required this.child, this.color}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).primaryColor;
     return BorderedContainerWithSides(
       child: child,
       width: width,

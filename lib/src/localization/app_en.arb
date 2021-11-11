@@ -10,5 +10,6 @@
   "viewShortPosts": "Short posts",
   "viewExperiencePage": "Professional Experience",
   "labelLoading": "Loading",
-  "labelAllPosts": "All Posts"
+  "labelAllPosts": "All Posts",
+  "labelPublishedOn": "Published on"
 }

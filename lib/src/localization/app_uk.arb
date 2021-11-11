@@ -10,5 +10,6 @@
   "viewShortPosts": "Короткі дописи",
   "viewExperiencePage": "Професійний досвід",
   "labelLoading": "Завантажується",
-  "labelAllPosts": "Всі публікації"
+  "labelAllPosts": "Всі публікації",
+  "labelPublishedOn": "Опубліковано"
 }
