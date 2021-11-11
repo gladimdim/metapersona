@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:metapersona/src/catalog_view/catalog_list_item_view.dart';
 import 'package:metapersona/src/posts/catalog.dart';
 import 'package:metapersona/src/utils.dart';
+
 class CatalogView extends StatelessWidget {
   const CatalogView({Key? key}) : super(key: key);
   static String routeName = "/catalog";
@@ -18,15 +19,12 @@ class CatalogView extends StatelessWidget {
         builder: (context, data) {
           if (data.connectionState == ConnectionState.done && data.hasData) {
             final Catalog catalog = data.data as Catalog;
-            return ListView(
-              children: catalog.posts
-                  .map(
-                    (e) => InkWell(
-                      onTap: () => onListItemClicked(e, context),
-                      child: CatalogListItemView(postItem: e),
-                    ),
-                  )
-                  .toList(),
+            return ListView.builder(
+              itemCount: catalog.posts.length,
+              itemBuilder: (context, index) => InkWell(
+                onTap: () => onListItemClicked(catalog.posts[index], context),
+                child: CatalogListItemView(postItem: catalog.posts[index]),
+              ),
             );
           } else {
             return const CircularProgressIndicator();
