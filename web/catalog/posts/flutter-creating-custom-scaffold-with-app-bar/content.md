@@ -18,6 +18,7 @@ Here is my app bar in action:
 ![custom_appbar.gif](screen3.gif)
 
 With the widget as a title:
+
 ![scrollable_appbar.gif](screen4.gif)
 
 ### And here is the dartpad with gist:
