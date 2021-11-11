@@ -290,6 +290,15 @@
         "reasonml",
         "ocaml"
       ]
+    },
+    {
+      "id": "reasonml-create-bindings-for-npm-package",
+      "title": "ReasonML: Create Bindings for NPM Package",
+      "dateAdded": "2019-09-09",
+      "tags": [
+        "reasonml",
+        "ocaml"
+      ]
     }
   ]
 }
