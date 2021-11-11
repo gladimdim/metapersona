@@ -1,0 +1,11 @@
+{
+  "id": "flutter-spravzhnij-cross-platform-ios-android-web-macos-linux-windows",
+  "title": "Flutter: Справжній Cross Platform. iOS. Android. Web. macOS. Linux. Windows.",
+  "dateAdded": "2020-01-19",
+  "thumbnail": "thumbnail.jpg",
+  "tags": [
+    "flutter",
+    "dart"
+  ],
+  "markdownContentUrl": "content.md"
+}
