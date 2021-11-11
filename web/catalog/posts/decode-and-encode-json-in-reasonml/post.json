@@ -1,0 +1,10 @@
+{
+  "id": "decode-and-encode-json-in-reasonml",
+  "title": "Decode and Encode JSON in ReasonML",
+  "dateAdded": "2019-09-09",
+  "tags": [
+    "reasonml",
+    "ocaml"
+  ],
+  "markdownContentUrl": "content.md"
+}
