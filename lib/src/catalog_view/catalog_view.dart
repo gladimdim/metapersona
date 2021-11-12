@@ -17,9 +17,11 @@ class CatalogView extends StatefulWidget {
 class _CatalogViewState extends State<CatalogView> {
   final AsyncMemoizer _catalogFetch = AsyncMemoizer();
   String? _searchQuery;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.labelAllPosts),
       ),
@@ -73,8 +75,11 @@ class _CatalogViewState extends State<CatalogView> {
     }
     var normalizedQuery = _searchQuery!.toLowerCase();
     var result = allPosts.where((e) {
-
-      return e.title.toLowerCase().contains(normalizedQuery) || e.tags.where((element) => element.toLowerCase().contains(normalizedQuery)).isNotEmpty;
+      return e.title.toLowerCase().contains(normalizedQuery) ||
+          e.tags
+              .where(
+                  (element) => element.toLowerCase().contains(normalizedQuery))
+              .isNotEmpty;
     }).toList();
     return result;
   }
