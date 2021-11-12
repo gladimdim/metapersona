@@ -21,7 +21,10 @@ class CatalogListItemView extends StatelessWidget {
                 ? Container()
                 : Expanded(
                     flex: 1,
-                    child: Image.network("${postItem.getFullThumbnail()}"),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 4.0),
+                      child: Image.network("${postItem.getFullThumbnail()}"),
+                    ),
                   ),
             Expanded(
               flex: 5,
