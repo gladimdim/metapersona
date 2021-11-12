@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class SearchBox extends StatefulWidget {
   const SearchBox(
       {Key? key,
@@ -32,7 +34,7 @@ class _SearchBoxState extends State<SearchBox> {
           flex: 5,
           child: TextField(
             decoration: InputDecoration(
-              labelText: "Search",
+              labelText: AppLocalizations.of(context)!.labelSearch,
             ),
             controller: _textEditingController,
           ),

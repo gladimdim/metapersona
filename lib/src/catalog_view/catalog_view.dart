@@ -28,20 +28,19 @@ class _CatalogViewState extends State<CatalogView> {
           Expanded(
               flex: 1,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: SearchBox(
                   onSearchChange: _execSearch,
                 ),
               )),
           Expanded(
-            flex: 9,
+            flex: 15,
             child: FutureBuilder(
               future: _execCatalogFetch(),
               builder: (context, data) {
                 if (data.connectionState == ConnectionState.done &&
                     data.hasData) {
                   final Catalog catalog = data.data as Catalog;
-                  print("rebuilding");
                   final viewablePosts = filteredItems(catalog.posts);
                   return ListView.builder(
                     itemCount: viewablePosts.length,
@@ -72,7 +71,11 @@ class _CatalogViewState extends State<CatalogView> {
     if (_searchQuery == null || noSearch) {
       return allPosts;
     }
-    var result = allPosts.where((e) => e.title.toLowerCase().contains(_searchQuery!.toLowerCase())).toList();
+    var normalizedQuery = _searchQuery!.toLowerCase();
+    var result = allPosts.where((e) {
+
+      return e.title.toLowerCase().contains(normalizedQuery) || e.tags.where((element) => element.toLowerCase().contains(normalizedQuery)).isNotEmpty;
+    }).toList();
     return result;
   }
 

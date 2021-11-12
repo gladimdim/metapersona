@@ -11,5 +11,6 @@
   "viewExperiencePage": "Professional Experience",
   "labelLoading": "Loading",
   "labelAllPosts": "All Posts",
-  "labelPublishedOn": "Published on"
+  "labelPublishedOn": "Published on",
+  "labelSearch": "Search"
 }
