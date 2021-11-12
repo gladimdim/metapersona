@@ -28,13 +28,13 @@ class _CatalogViewState extends State<CatalogView> {
           Expanded(
               flex: 1,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.only(left: 8.0),
                 child: SearchBox(
                   onSearchChange: _execSearch,
                 ),
               )),
           Expanded(
-            flex: 15,
+            flex: 10,
             child: FutureBuilder(
               future: _execCatalogFetch(),
               builder: (context, data) {
