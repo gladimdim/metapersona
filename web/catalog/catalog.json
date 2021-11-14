@@ -299,6 +299,16 @@
         "reasonml",
         "ocaml"
       ]
+    },
+    {
+      "id": "flutter-unblocking-ui-thread-with-isolates-compute-function",
+      "title": "Flutter: Unblocking UI thread with Isolates compute function",
+      "dateAdded": "2019-09-03",
+      "thumbnail": "thumbnail.jpg",
+      "tags": [
+        "flutter",
+        "dart"
+      ]
     }
   ]
 }

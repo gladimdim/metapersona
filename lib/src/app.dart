@@ -8,6 +8,7 @@ import 'package:metapersona/src/posts/post_view.dart';
 
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MetaPersonaApp extends StatelessWidget {
   const MetaPersonaApp({
@@ -43,7 +44,7 @@ class MetaPersonaApp extends StatelessWidget {
           onGenerateTitle: (BuildContext context) =>
               AppLocalizations.of(context)!.appTitle,
 
-          theme: ThemeData(),
+          theme: ThemeData(textTheme: GoogleFonts.merriweatherTextTheme()),
           darkTheme: ThemeData.dark(),
           themeMode: settingsController.themeMode,
 
