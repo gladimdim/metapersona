@@ -24,7 +24,7 @@ class ResponsiveCatalogListView extends StatelessWidget {
               .map((post) => Expanded(
                     flex: 1,
                     child: ConstrainedBox(
-                      constraints: BoxConstraints(
+                      constraints: const BoxConstraints(
                           minHeight: 220
                       ),
                       child: InkWell(
