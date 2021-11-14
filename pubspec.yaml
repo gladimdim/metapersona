@@ -20,6 +20,7 @@ dependencies:
   http: ^0.13.4
   share_plus : ^3.0.4
   timelines: ^0.1.0
+  google_fonts: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -37,3 +38,4 @@ flutter:
     # Add assets from the images directory to the application.
     - assets/images/
     - assets/images/profile/
+    - google_fonts/
