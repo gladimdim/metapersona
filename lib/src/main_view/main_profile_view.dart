@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:metapersona/src/catalog_view/catalog_view.dart';
+import 'package:metapersona/src/catalog/catalog_view.dart';
 import 'package:metapersona/src/components/bordered_bottom.dart';
 import 'package:metapersona/src/components/main_view_card_item.dart';
 import 'package:metapersona/src/experience/experience_page.dart';

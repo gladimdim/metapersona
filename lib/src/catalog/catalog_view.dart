@@ -1,10 +1,10 @@
+import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:metapersona/src/catalog_view/catalog_list_item_view.dart';
+import 'package:metapersona/src/catalog/responsive_catalog_list_view.dart';
 import 'package:metapersona/src/components/search_box.dart';
 import 'package:metapersona/src/posts/catalog.dart';
 import 'package:metapersona/src/utils.dart';
-import 'package:async/async.dart';
 
 class CatalogView extends StatefulWidget {
   const CatalogView({Key? key}) : super(key: key);
@@ -44,14 +44,9 @@ class _CatalogViewState extends State<CatalogView> {
                     data.hasData) {
                   final Catalog catalog = data.data as Catalog;
                   final viewablePosts = filteredItems(catalog.posts);
-                  return ListView.builder(
-                    itemCount: viewablePosts.length,
-                    itemBuilder: (context, index) => InkWell(
-                      onTap: () =>
-                          onListItemClicked(viewablePosts[index], context),
-                      child:
-                          CatalogListItemView(postItem: viewablePosts[index]),
-                    ),
+                  return ResponsiveCatalogListView(
+                    posts: viewablePosts,
+                    onItemClicked: (post) => onListItemClicked(post, context),
                   );
                 } else {
                   return const CircularProgressIndicator();
@@ -85,7 +80,6 @@ class _CatalogViewState extends State<CatalogView> {
   }
 
   void _execSearch(String searchQuery) {
-    print(searchQuery);
     if (_searchQuery == searchQuery) {
       return;
     }
