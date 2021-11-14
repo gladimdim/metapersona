@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:metapersona/src/catalog_view/catalog_view.dart';
+import 'package:metapersona/src/catalog/catalog_view.dart';
 import 'package:metapersona/src/experience/experience_page.dart';
 import 'package:metapersona/src/main_view/main_profile_view.dart';
 import 'package:metapersona/src/posts/post_view.dart';
