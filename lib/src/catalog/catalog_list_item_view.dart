@@ -55,7 +55,7 @@ class CatalogListItemView extends StatelessWidget {
                     children: postItem.tags
                         .map((e) => Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Chip(label: Text(e), elevation: 5.0,),
+                              child: Chip(label: Text(e, style: Theme.of(context).textTheme.bodyText2,), elevation: 5.0,),
                             ))
                         .toList(),
                   )

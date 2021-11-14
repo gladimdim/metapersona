@@ -106,8 +106,7 @@
       "tags": [
         "Слобода",
         "Ігри",
-        "flutter",
-        "dart"
+        "flutter"
       ]
     },
     {
@@ -197,8 +196,6 @@
       "dateAdded": "2020-07-13",
       "tags": [
         "flutter",
-        "dart",
-        "gamedev",
         "Ігри",
         "Слобода"
       ]
@@ -326,6 +323,16 @@
       "tags": [
         "gamedev"
       ]
+    },
+    {
+      "id": "road-to-flutter-and-dart",
+      "title": "Road to #Flutter and #Dart",
+      "dateAdded": "2019-05-15",
+      "tags": [
+        "flutter",
+        "dart"
+      ],
+      "thumbnail": "thumbnail.png"
     }
   ]
 }
