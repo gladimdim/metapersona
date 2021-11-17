@@ -13,22 +13,21 @@ class MicroView extends StatelessWidget {
     // return Text(micro.content);
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Card(
-        elevation: 10,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          // child: Text(micro.content),
-          child: Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: 300),
+        child: Card(
+          elevation: 10,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
             child: FutureBuilder(
-              future: flutter_markdown.loadLibrary(),
-              builder: (context, data) {
-                if (data.connectionState == ConnectionState.done) {
-                  return flutter_markdown.Markdown(data: micro.content);
-                } else {
-                  return Text("Loading");
-                }
-              }
-            ),
+                future: flutter_markdown.loadLibrary(),
+                builder: (context, data) {
+                  if (data.connectionState == ConnectionState.done) {
+                    return flutter_markdown.Markdown(data: micro.content);
+                  } else {
+                    return Text("Loading");
+                  }
+                }),
           ),
         ),
       ),

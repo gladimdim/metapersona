@@ -7,7 +7,7 @@ import 'package:async/async.dart';
 import 'package:metapersona/src/utils.dart';
 
 class MicroBlogView extends StatefulWidget {
-  static String routeName = "micro";
+  static String routeName = "/micro";
 
   const MicroBlogView({Key? key}) : super(key: key);
 
