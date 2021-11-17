@@ -21,20 +21,20 @@ class ResponsiveCatalogListView extends StatelessWidget {
         final rowPosts = splitPosts[index];
         return Row(
           children: rowPosts
-              .map((post) => Expanded(
-                    flex: 1,
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                          minHeight: 220
+              .map(
+                (post) => Expanded(
+                  flex: 1,
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(minHeight: 220),
+                    child: InkWell(
+                      onTap: () => onItemClicked(
+                        post,
                       ),
-                      child: InkWell(
-                        onTap: () => onItemClicked(
-                          post,
-                        ),
-                        child: CatalogListItemView(postItem: post),
-                      ),
+                      child: CatalogListItemView(postItem: post),
                     ),
-                  ))
+                  ),
+                ),
+              )
               .toList(),
         );
       },

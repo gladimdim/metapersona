@@ -37,21 +37,19 @@ class PostView extends StatelessWidget {
               ],
             ),
             body: Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints.tightFor(width: 960),
-                child: FutureBuilder(
-                  future: flutter_markdown.loadLibrary(),
-                  builder: (context, data) => flutter_markdown.Markdown(
-                    onTapLink: (text, link, title) async {
-                      if (link == null) {
-                        return;
-                      }
-                      await launch(link);
-                    },
-                    selectable: true,
-                    data: "# ${post.title}\n" + post.markdownContent,
-                    imageDirectory: getRootUrlPrefix() + postsPath + postId,
-                  ),
+              child: FutureBuilder(
+                future: flutter_markdown.loadLibrary(),
+                builder: (context, data) => flutter_markdown.Markdown(
+                  padding: EdgeInsets.symmetric(horizontal: isNarrow(context)? 8.0 : calculatePaddings(context)),
+                  onTapLink: (text, link, title) async {
+                    if (link == null) {
+                      return;
+                    }
+                    await launch(link);
+                  },
+                  selectable: true,
+                  data: "# ${post.title}\n" + post.markdownContent,
+                  imageDirectory: getRootUrlPrefix() + postsPath + postId,
                 ),
               ),
             ),
