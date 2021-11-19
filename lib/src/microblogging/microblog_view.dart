@@ -36,6 +36,12 @@ class _MicroBlogViewState extends State<MicroBlogView> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.labelAllPosts),
+        actions: [
+          if (mcBLog != null)
+            LanguageSelector(
+                languages: getAllLanguages(),
+                onSelected: (newLangs) => _setSearchByLanguage(newLangs)),
+        ],
       ),
       body: Column(
         children: [
@@ -43,24 +49,8 @@ class _MicroBlogViewState extends State<MicroBlogView> {
               flex: 1,
               child: Padding(
                 padding: const EdgeInsets.only(left: 8.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Expanded(
-                      flex: 10,
-                      child: SearchBox(
-                        onSearchChange: _execSearch,
-                      ),
-                    ),
-                    if (mcBLog != null)
-                      Expanded(
-                        flex: 1,
-                        child: LanguageSelector(
-                            languages: getAllLanguages(),
-                            onSelected: (newLangs) =>
-                                _setSearchByLanguage(newLangs)),
-                      ),
-                  ],
+                child: SearchBox(
+                  onSearchChange: _execSearch,
                 ),
               )),
           Expanded(
@@ -117,7 +107,8 @@ class _MicroBlogViewState extends State<MicroBlogView> {
   List<MicroBlogItem> filterByLanguage(List<MicroBlogItem> posts) {
     return posts
         .where((element) =>
-            element.languageEmoji != null && _languages.contains(element.languageEmoji))
+            element.languageEmoji != null &&
+            _languages.contains(element.languageEmoji))
         .toList();
   }
 
