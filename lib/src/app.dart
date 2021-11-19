@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:metapersona/src/catalog/catalog_view.dart';
 import 'package:metapersona/src/experience/experience_page.dart';
 import 'package:metapersona/src/main_view/main_profile_view.dart';
+import 'package:metapersona/src/microblogging/microblog_view.dart';
 import 'package:metapersona/src/posts/post_view.dart';
 
 import 'settings/settings_controller.dart';
@@ -71,6 +72,9 @@ class MetaPersonaApp extends StatelessWidget {
                   }
                   if (ExperiencePage.routeName == routeSettings.name) {
                     return const ExperiencePage();
+                  }
+                  if (MicroBlogView.routeName == routeSettings.name) {
+                    return const MicroBlogView();
                   }
                   return const MainProfileView();
                 });

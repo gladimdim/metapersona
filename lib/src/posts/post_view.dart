@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_markdown/flutter_markdown.dart'
-    deferred as flutter_markdown;
+import 'package:metapersona/src/components/markdown_viewer.dart';
 import 'package:metapersona/src/posts/post.dart';
 import 'package:metapersona/src/utils.dart';
 import 'package:share_plus/share_plus.dart' deferred as share_plus;
-import 'package:url_launcher/url_launcher.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -37,22 +35,10 @@ class PostView extends StatelessWidget {
               ],
             ),
             body: Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints.tightFor(width: 960),
-                child: FutureBuilder(
-                  future: flutter_markdown.loadLibrary(),
-                  builder: (context, data) => flutter_markdown.Markdown(
-                    onTapLink: (text, link, title) async {
-                      if (link == null) {
-                        return;
-                      }
-                      await launch(link);
-                    },
-                    selectable: true,
-                    data: "# ${post.title}\n" + post.markdownContent,
-                    imageDirectory: getRootUrlPrefix() + postsPath + postId,
-                  ),
-                ),
+              child: MarkdownViewer(
+                content: "# ${post.title}\n" + post.markdownContent,
+                imageDirectory: getRootUrlPrefix() + postsPath + postId,
+                contentPadding: EdgeInsets.symmetric(horizontal: isNarrow(context)? 8.0 : calculatePaddings(context)),
               ),
             ),
           );

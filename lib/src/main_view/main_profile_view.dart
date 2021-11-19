@@ -4,6 +4,7 @@ import 'package:metapersona/src/catalog/catalog_view.dart';
 import 'package:metapersona/src/components/bordered_bottom.dart';
 import 'package:metapersona/src/components/main_view_card_item.dart';
 import 'package:metapersona/src/experience/experience_page.dart';
+import 'package:metapersona/src/microblogging/microblog_view.dart';
 import 'package:metapersona/src/settings/settings_view.dart';
 
 class MainProfileView extends StatelessWidget {
@@ -93,6 +94,7 @@ class MainProfileView extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: MainMenuCardItem(
                         text: AppLocalizations.of(context)!.viewShortPosts,
+                        onPress: () => _viewMicros(context),
                       ),
                     ),
                   ),
@@ -105,7 +107,6 @@ class MainProfileView extends StatelessWidget {
                   onPress: () => _viewExperience(context),
                 ),
               ),
-
             ],
           ),
         ),
@@ -113,9 +114,12 @@ class MainProfileView extends StatelessWidget {
     );
   }
 
-
   void _viewMyPostsPressed(BuildContext context) {
     Navigator.restorablePushNamed(context, CatalogView.routeName);
+  }
+
+  void _viewMicros(BuildContext context) {
+    Navigator.restorablePushNamed(context, MicroBlogView.routeName);
   }
 
   void _viewExperience(BuildContext context) {
