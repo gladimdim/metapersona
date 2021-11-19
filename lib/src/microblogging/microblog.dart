@@ -41,8 +41,8 @@ class MicroBlogItem {
       date = DateTime.parse(dateTimeString);
     }
     var lang =  input["languageEmoji"] ?? MicroBlogItem.defaultLanguage;
-    var linksJson = input["links"] as List;
-    var links = linksJson.map<String>((e) => e).toList();
+    var linksJson = input["links"] as List?;
+    var links = linksJson?.map<String>((e) => e).toList();
     return MicroBlogItem(content: input["content"], thumbnail: input["thumbnail"], publishedOn: date, languageEmoji: lang, links: links);
   }
 }

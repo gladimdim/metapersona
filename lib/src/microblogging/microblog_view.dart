@@ -63,13 +63,14 @@ class _MicroBlogViewState extends State<MicroBlogView> {
                     itemBuilder: (context, index) {
                       return MicroView(
                         micro: shownPosts![index],
-                        imageFolder: getRootUrlPrefix() + MicroBlogView.microsPath + MicroBlog.storageFolderPath,
+                        imageFolder: getRootUrlPrefix() +
+                            MicroBlogView.microsPath +
+                            MicroBlog.storageFolderPath,
                       );
                     },
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: isNarrow(context) ? 1 : 3,
-                      childAspectRatio: 1.5
-                    ),
+                        crossAxisCount: gridPerAxisCount(context),
+                        childAspectRatio: 2),
                   ),
           ),
         ],
@@ -112,7 +113,6 @@ class _MicroBlogViewState extends State<MicroBlogView> {
   }
 
   List<MicroBlogItem> filterByLanguage(List<MicroBlogItem> posts) {
-
     return posts
         .where((element) =>
             element.languageEmoji != null &&
