@@ -9,6 +9,7 @@ import 'package:metapersona/src/utils.dart';
 
 class MicroBlogView extends StatefulWidget {
   static String routeName = "/micro";
+  static String microsPath = "micro/";
 
   const MicroBlogView({Key? key}) : super(key: key);
 
@@ -38,8 +39,9 @@ class _MicroBlogViewState extends State<MicroBlogView> {
         actions: [
           if (mcBLog != null)
             LanguageSelector(
-                languages: getAllLanguages(),
-                onSelected: (newLangs) => _setSearchByLanguage(newLangs)),
+              languages: getAllLanguages(),
+              onSelected: (newLangs) => _setSearchByLanguage(newLangs),
+            ),
         ],
       ),
       body: Column(
@@ -56,13 +58,17 @@ class _MicroBlogViewState extends State<MicroBlogView> {
             flex: 10,
             child: shownPosts == null
                 ? Container()
-                : ListView.builder(
+                : GridView.builder(
                     itemCount: shownPosts!.length,
                     itemBuilder: (context, index) {
                       return MicroView(
                         micro: shownPosts![index],
+                        imageFolder: getRootUrlPrefix() + MicroBlogView.microsPath,
                       );
                     },
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: isNarrow(context) ? 1 : 3,
+                    ),
                   ),
           ),
         ],
