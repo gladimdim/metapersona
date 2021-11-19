@@ -29,7 +29,7 @@ class MicroBlogItem {
   final DateTime? publishedOn;
   final List<String>? links;
   final String? languageEmoji;
-  static final String defaultLanguage = "🇺🇸";
+  static const String defaultLanguage = "🇺🇸";
 
   MicroBlogItem({required this.content, this.thumbnail, this.publishedOn, this.links, this.languageEmoji});
 

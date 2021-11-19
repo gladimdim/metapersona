@@ -31,7 +31,6 @@ class _MicroBlogViewState extends State<MicroBlogView> {
 
   @override
   Widget build(BuildContext context) {
-    print(shownPosts?.length);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
