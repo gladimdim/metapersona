@@ -28,12 +28,9 @@ class _MicroViewState extends State<MicroView> {
               elevation: 10,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Expanded(
-                  flex: 4,
-                  child: MarkdownViewer(
-                    content: widget.micro.content,
-                    imageDirectory: widget.imageFolder,
-                  ),
+                child: MarkdownViewer(
+                  content: widget.micro.content,
+                  imageDirectory: widget.imageFolder,
                 ),
               ),
             ),
