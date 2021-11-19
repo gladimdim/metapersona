@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 class MicroBlog {
   final List<MicroBlogItem> micros;
+  static const storageFolderPath = "storage";
 
   MicroBlog({required this.micros});
 
@@ -40,6 +41,8 @@ class MicroBlogItem {
       date = DateTime.parse(dateTimeString);
     }
     var lang =  input["languageEmoji"] ?? MicroBlogItem.defaultLanguage;
-    return MicroBlogItem(content: input["content"], thumbnail: input["thumbnail"], publishedOn: date, languageEmoji: lang);
+    var linksJson = input["links"] as List;
+    var links = linksJson.map<String>((e) => e).toList();
+    return MicroBlogItem(content: input["content"], thumbnail: input["thumbnail"], publishedOn: date, languageEmoji: lang, links: links);
   }
 }

@@ -51,7 +51,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: SearchBox(
-                  onSearchChange: _execSearch,
+                  onSearchChange: _applySearchByText,
                 ),
               )),
           Expanded(
@@ -63,7 +63,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
                     itemBuilder: (context, index) {
                       return MicroView(
                         micro: shownPosts![index],
-                        imageFolder: getRootUrlPrefix() + MicroBlogView.microsPath,
+                        imageFolder: getRootUrlPrefix() + MicroBlogView.microsPath + MicroBlog.storageFolderPath,
                       );
                     },
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -93,6 +93,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
         .runOnce(() => MicroBlog.initFromUrl(getRootUrlPrefix()));
     setState(() {
       mcBLog = result;
+      _languages = getAllLanguages();
       shownPosts = mcBLog!.micros;
     });
   }
@@ -110,6 +111,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
   }
 
   List<MicroBlogItem> filterByLanguage(List<MicroBlogItem> posts) {
+
     return posts
         .where((element) =>
             element.languageEmoji != null &&
@@ -123,7 +125,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
     return byLanguage;
   }
 
-  void _execSearch(String searchQuery) {
+  void _applySearchByText(String searchQuery) {
     if (_searchQuery == searchQuery) {
       return;
     }
