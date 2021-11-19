@@ -61,11 +61,14 @@ class _MicroBlogViewState extends State<MicroBlogView> {
                 : GridView.builder(
                     itemCount: shownPosts!.length,
                     itemBuilder: (context, index) {
-                      return MicroView(
-                        micro: shownPosts![index],
-                        imageFolder: getRootUrlPrefix() +
-                            MicroBlogView.microsPath +
-                            MicroBlog.storageFolderPath,
+                      return ConstrainedBox(
+                        constraints: BoxConstraints.loose(const Size(400, 300)),
+                        child: MicroView(
+                          micro: shownPosts![index],
+                          imageFolder: getRootUrlPrefix() +
+                              MicroBlogView.microsPath +
+                              MicroBlog.storageFolderPath,
+                        ),
                       );
                     },
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
