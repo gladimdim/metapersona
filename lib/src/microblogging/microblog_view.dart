@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:metapersona/src/components/language_selector.dart';
-import 'package:metapersona/src/components/search_box.dart';
+import 'package:metapersona/src/components/list_search_refresh.dart';
 import 'package:metapersona/src/localization/my_localization.dart';
 import 'package:metapersona/src/microblogging/micro_view.dart';
 import 'package:metapersona/src/microblogging/microblog.dart';
@@ -45,27 +45,12 @@ class _MicroBlogViewState extends State<MicroBlogView> {
       body: Column(
         children: [
           Expanded(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 10,
-                      child: SearchBox(
-                        onSearchChange: _applySearchByText,
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: IconButton(
-                        icon: Icon(Icons.refresh),
-                        onPressed: _refreshData,
-                      ),
-                    )
-                  ],
-                ),
-              )),
+            flex: 1,
+            child: ListSearchRefreshView(
+              onTextSearch: _applySearchByText,
+              onRefreshDataPressed: _refreshData,
+            ),
+          ),
           Expanded(
             flex: 10,
             child: shownPosts == null
