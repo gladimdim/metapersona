@@ -3,7 +3,7 @@
     {
       "content": "I like it when Devs of Old Web say that Flutter is not the Future because it would break all the web.\n\nyet a single Ad Block extension ruins 99% of their web sites that dont even load anymore. And these pages have no interactivity at all",
       "publishedOn": "2021-11-19",
-      "languageEmoji": "\uD83C\uDDFA\uD83C\uDDE6"
+      "languageEmoji": "\uD83C\uDDFA\uD83C\uDDF8"
     },
     {
       "content": "# MetaPersona progress\n\n Finally I had time to implement micro blogging on meta persona profile. I can now embed tiny markdowns, even with images for each micro. \n\n Like this: ![3.png](3.png) \n\n Micro is a Tweet but in Meta Persona context. Read more about it on *1 and *2 in links section",

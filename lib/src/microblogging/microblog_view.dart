@@ -4,7 +4,6 @@ import 'package:metapersona/src/components/search_box.dart';
 import 'package:metapersona/src/localization/my_localization.dart';
 import 'package:metapersona/src/microblogging/micro_view.dart';
 import 'package:metapersona/src/microblogging/microblog.dart';
-import 'package:async/async.dart';
 import 'package:metapersona/src/utils.dart';
 
 class MicroBlogView extends StatefulWidget {
@@ -18,7 +17,6 @@ class MicroBlogView extends StatefulWidget {
 }
 
 class _MicroBlogViewState extends State<MicroBlogView> {
-  final AsyncMemoizer _catalogFetch = AsyncMemoizer();
   String? _searchQuery;
   MicroBlog? mcBLog;
   List<MicroBlogItem>? shownPosts;
@@ -50,8 +48,22 @@ class _MicroBlogViewState extends State<MicroBlogView> {
               flex: 1,
               child: Padding(
                 padding: const EdgeInsets.only(left: 8.0),
-                child: SearchBox(
-                  onSearchChange: _applySearchByText,
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 10,
+                      child: SearchBox(
+                        onSearchChange: _applySearchByText,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: IconButton(
+                        icon: Icon(Icons.refresh),
+                        onPressed: _refreshData,
+                      ),
+                    )
+                  ],
                 ),
               )),
           Expanded(
@@ -81,6 +93,11 @@ class _MicroBlogViewState extends State<MicroBlogView> {
     );
   }
 
+  void _refreshData() async {
+    await _execCatalogFetch();
+    updateShownPosts();
+  }
+
   Set<String> getAllLanguages() {
     var blog = mcBLog;
     if (blog == null) {
@@ -94,8 +111,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
   }
 
   _execCatalogFetch() async {
-    final result = await _catalogFetch
-        .runOnce(() => MicroBlog.initFromUrl(getRootUrlPrefix()));
+    final result = await MicroBlog.initFromUrl(getRootUrlPrefix());
     setState(() {
       mcBLog = result;
       _languages = getAllLanguages();
