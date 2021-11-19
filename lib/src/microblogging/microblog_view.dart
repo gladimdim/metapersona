@@ -68,6 +68,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
                     },
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: isNarrow(context) ? 1 : 3,
+                      childAspectRatio: 1.5
                     ),
                   ),
           ),
