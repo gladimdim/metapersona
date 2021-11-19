@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LanguageSelector extends StatefulWidget {
-  final List<String> languages;
-  final Function(List<String>) onSelected;
+  final Set<String> languages;
+  final Function(Set<String>) onSelected;
 
   const LanguageSelector(
       {Key? key, required this.languages, required this.onSelected})
@@ -51,6 +51,6 @@ class _LanguageSelectorState extends State<LanguageSelector> {
       selected.remove(language);
     }
     setState(() {});
-    widget.onSelected(selected.toList());
+    widget.onSelected(selected);
   }
 }

@@ -21,7 +21,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
   String? _searchQuery;
   MicroBlog? mcBLog;
   List<MicroBlogItem>? shownPosts;
-  List<String> _languages = [];
+  Set<String> _languages = {};
 
   @override
   void initState() {
@@ -71,16 +71,16 @@ class _MicroBlogViewState extends State<MicroBlogView> {
     );
   }
 
-  List<String> getAllLanguages() {
+  Set<String> getAllLanguages() {
     var blog = mcBLog;
     if (blog == null) {
-      return [MicroBlogItem.defaultLanguage];
+      return {MicroBlogItem.defaultLanguage};
     }
     var result = blog.micros
         .where((element) => element.languageEmoji != null)
         .map<String>((e) => e.languageEmoji!)
         .toList();
-    return result;
+    return result.toSet();
   }
 
   _execCatalogFetch() async {
@@ -136,7 +136,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
     });
   }
 
-  void _setSearchByLanguage(List<String> newLangs) {
+  void _setSearchByLanguage(Set<String> newLangs) {
     _languages = newLangs;
 
     setState(() {
