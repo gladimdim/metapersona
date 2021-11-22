@@ -8,9 +8,10 @@ import 'package:metapersona/src/utils.dart';
 
 class MicroBlogView extends StatefulWidget {
   static String routeName = "/micro";
+  static String routePrefix = "/micro/";
   static String microsPath = "micro/";
-
-  const MicroBlogView({Key? key}) : super(key: key);
+  final String? microId;
+  const MicroBlogView({Key? key, this.microId}) : super(key: key);
 
   @override
   State<MicroBlogView> createState() => _MicroBlogViewState();
