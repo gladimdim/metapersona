@@ -24,7 +24,7 @@ class ListSearchRefreshView extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: Icon(Icons.refresh),
+            icon: const Icon(Icons.refresh),
             onPressed: onRefreshDataPressed,
           )
         ],

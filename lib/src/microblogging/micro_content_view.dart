@@ -3,18 +3,20 @@ import 'package:metapersona/src/components/markdown_viewer.dart';
 import 'package:metapersona/src/microblogging/microblog.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class MicroView extends StatefulWidget {
+class MicroContentView extends StatefulWidget {
   final MicroBlogItem micro;
   final String? imageFolder;
+  final bool fullHeader;
+  final VoidCallback onNavigateToMicro;
 
-  const MicroView({Key? key, required this.micro, this.imageFolder})
+  const MicroContentView({Key? key, required this.micro, this.imageFolder, this.fullHeader = false, required this.onNavigateToMicro})
       : super(key: key);
 
   @override
-  State<MicroView> createState() => _MicroViewState();
+  State<MicroContentView> createState() => _MicroContentViewState();
 }
 
-class _MicroViewState extends State<MicroView> {
+class _MicroContentViewState extends State<MicroContentView> {
   bool expanded = false;
 
   @override
@@ -55,12 +57,18 @@ class _MicroViewState extends State<MicroView> {
                   )
                   .toList(),
             ),
-          if (widget.micro.links != null)
+
             Positioned.fill(
                 child: Align(
                     alignment: Alignment.topRight,
-                    child: IconButton(
-                        onPressed: _expandPressed, icon: Icon(Icons.info)))),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(onPressed: widget.onNavigateToMicro, icon: const Icon(Icons.link)),
+                        if (widget.micro.links != null) IconButton(
+                            onPressed: _expandPressed, icon: const Icon(Icons.info)),
+                      ],
+                    ))),
         ],
       ),
     );
