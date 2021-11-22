@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:metapersona/src/components/language_selector.dart';
 import 'package:metapersona/src/components/list_search_refresh.dart';
 import 'package:metapersona/src/localization/my_localization.dart';
-import 'package:metapersona/src/microblogging/micro_view.dart';
+import 'package:metapersona/src/microblogging/full_micro_content_view.dart';
+import 'package:metapersona/src/microblogging/micro_content_view.dart';
 import 'package:metapersona/src/microblogging/microblog.dart';
 import 'package:metapersona/src/utils.dart';
 
 class MicroBlogView extends StatefulWidget {
   static String routeName = "/micro";
+  static String routePrefix = "/micro/";
   static String microsPath = "micro/";
+  final String? microId;
 
-  const MicroBlogView({Key? key}) : super(key: key);
+  const MicroBlogView({Key? key, this.microId}) : super(key: key);
 
   @override
   State<MicroBlogView> createState() => _MicroBlogViewState();
@@ -18,9 +21,10 @@ class MicroBlogView extends StatefulWidget {
 
 class _MicroBlogViewState extends State<MicroBlogView> {
   String? _searchQuery;
-  MicroBlog? mcBLog;
+  MicroBlog? mcBlog;
   List<MicroBlogItem>? shownPosts;
   Set<String> _languages = {};
+  MicroBlogItem? microItem;
 
   @override
   void initState() {
@@ -30,52 +34,81 @@ class _MicroBlogViewState extends State<MicroBlogView> {
 
   @override
   Widget build(BuildContext context) {
+    final micro = microItem;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.labelAllPosts),
         actions: [
-          if (mcBLog != null)
+          if (mcBlog != null)
             LanguageSelector(
               languages: getAllLanguages(),
               onSelected: (newLangs) => _setSearchByLanguage(newLangs),
             ),
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            flex: 1,
-            child: ListSearchRefreshView(
-              onTextSearch: _applySearchByText,
-              onRefreshDataPressed: _refreshData,
-            ),
-          ),
-          Expanded(
-            flex: 10,
-            child: shownPosts == null
-                ? Container()
-                : GridView.builder(
-                    itemCount: shownPosts!.length,
-                    itemBuilder: (context, index) {
-                      return ConstrainedBox(
-                        constraints: BoxConstraints.loose(const Size(400, 300)),
-                        child: MicroView(
-                          micro: shownPosts![index],
-                          imageFolder: getRootUrlPrefix() +
-                              MicroBlogView.microsPath +
-                              MicroBlog.storageFolderPath,
-                        ),
-                      );
-                    },
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: gridPerAxisCount(context),
-                        childAspectRatio: 2),
+      body: micro != null
+          ? FullMicroContentView(micro: micro)
+          : Column(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: ListSearchRefreshView(
+                    onTextSearch: _applySearchByText,
+                    onRefreshDataPressed: _refreshData,
                   ),
-          ),
-        ],
-      ),
+                ),
+                Expanded(
+                  flex: 10,
+                  child: shownPosts == null
+                      ? Container()
+                      : GridView.builder(
+                          itemCount: shownPosts!.length,
+                          itemBuilder: (context, index) {
+                            return ConstrainedBox(
+                              constraints:
+                                  BoxConstraints.loose(const Size(400, 300)),
+                              child: MicroContentView(
+                                micro: shownPosts![index],
+                                imageFolder: getRootUrlPrefix() +
+                                    MicroBlogView.microsPath +
+                                    MicroBlog.storageFolderPath,
+                                  onNavigateToMicro: () => _navigateToMicro(context, index),
+                              ),
+                            );
+                          },
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: gridPerAxisCount(context),
+                                  childAspectRatio: 2),
+                        ),
+                ),
+              ],
+            ),
     );
+  }
+
+  bool hasData() {
+    return shownPosts != null;
+  }
+
+  MicroBlogItem? getRealMicroObjectByStringId(String? micro) {
+    if (micro == null) {
+      return null;
+    }
+    if (mcBlog == null) {
+      return null;
+    }
+
+    var integer = int.tryParse(micro);
+    if (integer == null) {
+      return null;
+    }
+
+    if (mcBlog!.micros.length < integer) {
+      return null;
+    }
+    return mcBlog!.micros[mcBlog!.micros.length - 1 - integer];
   }
 
   void _refreshData() async {
@@ -84,7 +117,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
   }
 
   Set<String> getAllLanguages() {
-    var blog = mcBLog;
+    var blog = mcBlog;
     if (blog == null) {
       return {MicroBlogItem.defaultLanguage};
     }
@@ -98,9 +131,10 @@ class _MicroBlogViewState extends State<MicroBlogView> {
   _execCatalogFetch() async {
     final result = await MicroBlog.initFromUrl(getRootUrlPrefix());
     setState(() {
-      mcBLog = result;
+      mcBlog = result;
       _languages = getAllLanguages();
-      shownPosts = mcBLog!.micros;
+      shownPosts = mcBlog!.micros;
+      microItem = getRealMicroObjectByStringId(widget.microId);
     });
   }
 
@@ -139,7 +173,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
   }
 
   void updateShownPosts() {
-    var blog = mcBLog;
+    var blog = mcBlog;
     if (blog == null) {
       return;
     }
@@ -154,5 +188,10 @@ class _MicroBlogViewState extends State<MicroBlogView> {
     setState(() {
       updateShownPosts();
     });
+  }
+
+  void _navigateToMicro(BuildContext context, int index) {
+    var reversedIndex = mcBlog!.micros.length - 1 - index;
+    Navigator.restorablePushNamed(context, "${MicroBlogView.routeName}/$reversedIndex");
   }
 }

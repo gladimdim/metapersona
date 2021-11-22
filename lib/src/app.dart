@@ -61,6 +61,10 @@ class MetaPersonaApp extends StatelessWidget {
                         routeSettings.name!.split(PostView.routeNamePrefix)[1];
                     return PostView(postId: split);
                   }
+                  if (routeSettings.name!.indexOf(MicroBlogView.routePrefix) == 0) {
+                    final split = routeSettings.name!.split(MicroBlogView.routePrefix)[1];
+                    return MicroBlogView(microId: split);
+                  }
                   if (routeSettings.name == SettingsView.routeName) {
                     return SettingsView(controller: settingsController);
                   }
