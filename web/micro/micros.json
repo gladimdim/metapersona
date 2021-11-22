@@ -1,43 +1,40 @@
 {
   "micros": [
     {
-      "content": "# MetaPersona progress\n\n Finally I had time to implement micro blogging on meta persona profile. I can now embed tiny markdowns, even with images for each micro. \n\n Like this: ![3.png](3.png) Micro is a Tweet but in Meta Persona context.",
+      "content": "# Засилля шарлатанів. \n\nЯкось ще 5 років тому, ось ці всі психологи, психологіні, гештальт коучери вигорання і інші паразити взагалі не існували в наших степах. Але щось трапилося, і кожна друга контора строчить ось такі пости *0 на ДОУмийку ![4.png](4.png) При чому, що створюється така кількість контенту на всіх ресурсах, що інші люди теж починають думати, що у них проблеми з головою, токсікі в командах, нещасливе дитинство, батько алкаш і тд. \n\n\n\nХоча насправді, ці шарлатани лише відпрацьовують своє лаве, створюючи проблеми там, де їх немає. Прямо як agile coaches та скрам мастера. Судячи з усього, через пару років їх витіснять ось такі PhD Psychology з інститута Макаренка, факультет вивчення Пірамідок. Будуть сидіти на дейліка і питати у нас, \"як вигорів, чому не хочеш брати цю таску з 2017 року в джирі, може проблема в тобі?\"\n\n",
+      "publishedOn": "2021-11-19",
+      "languageEmoji": "\uD83C\uDDFA\uD83C\uDDE6",
+      "links": [
+        "https://dou.ua/forums/topic/35415"
+      ]
+    },
+    {
+      "content": "I like it when Devs of Old Web say that Flutter is not the Future because it would break all the web.\n\nyet a single Ad Block extension ruins 99% of their web sites that dont even load anymore. And these pages have no interactivity at all",
+      "publishedOn": "2021-11-19",
+      "languageEmoji": "\uD83C\uDDFA\uD83C\uDDF8"
+    },
+    {
+      "content": "# MetaPersona progress\n\n Finally I had time to implement micro blogging on meta persona profile. I can now embed tiny markdowns, even with images for each micro. \n\n Like this: ![3.png](3.png) \n\n Micro is a Tweet but in Meta Persona context. Read more about it on *1 and *2 in links section",
       "publishedOn": "2021-11-17",
       "links": [
-        "https://google.com",
-        "https://gladimdim.org",
-        "https://dmytrogladkyi.com"
+        "https://dmytrogladkyi.com",
+        "https://github.com/gladimdim/metapersona"
       ],
       "languageEmoji": "\uD83C\uDDFA\uD83C\uDDF8"
     },
     {
       "content": "# First MetaMicro ever.\n\nThis is my first Meta Micro post ever added to #metapersona profile\n\nThis can have something embedded inside\n\nOr maybe not hehe\n\n How are you?",
       "publishedOn": "2021-11-17",
-      "links": [
-        "https://google.com",
-        "https://gladimdim.org",
-        "https://dmytrogladkyi.com"
-      ],
       "languageEmoji": "\uD83C\uDDFA\uD83C\uDDF8"
     },
     {
       "content": "# 🌟 Другий мікро українською :)",
       "publishedOn": "2021-11-17",
-      "links": [
-        "https://google.com",
-        "https://gladimdim.org",
-        "https://dmytrogladkyi.com"
-      ],
       "languageEmoji": "\uD83C\uDDFA\uD83C\uDDE6"
     },
     {
-      "content": "# 🌟 Перший мікро українською :) ![1.png](1.png)",
+      "content": "# 🌟 Перший мікро українською :)",
       "publishedOn": "2021-11-17",
-      "links": [
-        "https://google.com",
-        "https://gladimdim.org",
-        "https://dmytrogladkyi.com"
-      ],
       "languageEmoji": "\uD83C\uDDFA\uD83C\uDDE6"
     }
   ]

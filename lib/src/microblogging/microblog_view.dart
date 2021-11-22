@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:metapersona/src/components/language_selector.dart';
-import 'package:metapersona/src/components/search_box.dart';
+import 'package:metapersona/src/components/list_search_refresh.dart';
 import 'package:metapersona/src/localization/my_localization.dart';
 import 'package:metapersona/src/microblogging/micro_view.dart';
 import 'package:metapersona/src/microblogging/microblog.dart';
-import 'package:async/async.dart';
 import 'package:metapersona/src/utils.dart';
 
 class MicroBlogView extends StatefulWidget {
@@ -18,7 +17,6 @@ class MicroBlogView extends StatefulWidget {
 }
 
 class _MicroBlogViewState extends State<MicroBlogView> {
-  final AsyncMemoizer _catalogFetch = AsyncMemoizer();
   String? _searchQuery;
   MicroBlog? mcBLog;
   List<MicroBlogItem>? shownPosts;
@@ -47,13 +45,12 @@ class _MicroBlogViewState extends State<MicroBlogView> {
       body: Column(
         children: [
           Expanded(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: SearchBox(
-                  onSearchChange: _applySearchByText,
-                ),
-              )),
+            flex: 1,
+            child: ListSearchRefreshView(
+              onTextSearch: _applySearchByText,
+              onRefreshDataPressed: _refreshData,
+            ),
+          ),
           Expanded(
             flex: 10,
             child: shownPosts == null
@@ -61,20 +58,29 @@ class _MicroBlogViewState extends State<MicroBlogView> {
                 : GridView.builder(
                     itemCount: shownPosts!.length,
                     itemBuilder: (context, index) {
-                      return MicroView(
-                        micro: shownPosts![index],
-                        imageFolder: getRootUrlPrefix() + MicroBlogView.microsPath + MicroBlog.storageFolderPath,
+                      return ConstrainedBox(
+                        constraints: BoxConstraints.loose(const Size(400, 300)),
+                        child: MicroView(
+                          micro: shownPosts![index],
+                          imageFolder: getRootUrlPrefix() +
+                              MicroBlogView.microsPath +
+                              MicroBlog.storageFolderPath,
+                        ),
                       );
                     },
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: isNarrow(context) ? 1 : 3,
-                      childAspectRatio: 1.5
-                    ),
+                        crossAxisCount: gridPerAxisCount(context),
+                        childAspectRatio: 2),
                   ),
           ),
         ],
       ),
     );
+  }
+
+  void _refreshData() async {
+    await _execCatalogFetch();
+    updateShownPosts();
   }
 
   Set<String> getAllLanguages() {
@@ -90,8 +96,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
   }
 
   _execCatalogFetch() async {
-    final result = await _catalogFetch
-        .runOnce(() => MicroBlog.initFromUrl(getRootUrlPrefix()));
+    final result = await MicroBlog.initFromUrl(getRootUrlPrefix());
     setState(() {
       mcBLog = result;
       _languages = getAllLanguages();
@@ -112,7 +117,6 @@ class _MicroBlogViewState extends State<MicroBlogView> {
   }
 
   List<MicroBlogItem> filterByLanguage(List<MicroBlogItem> posts) {
-
     return posts
         .where((element) =>
             element.languageEmoji != null &&

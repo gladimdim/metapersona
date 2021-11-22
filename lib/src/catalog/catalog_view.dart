@@ -2,7 +2,7 @@ import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:metapersona/src/catalog/responsive_catalog_list_view.dart';
-import 'package:metapersona/src/components/search_box.dart';
+import 'package:metapersona/src/components/list_search_refresh.dart';
 import 'package:metapersona/src/posts/catalog.dart';
 import 'package:metapersona/src/utils.dart';
 
@@ -15,7 +15,7 @@ class CatalogView extends StatefulWidget {
 }
 
 class _CatalogViewState extends State<CatalogView> {
-  final AsyncMemoizer _catalogFetch = AsyncMemoizer();
+  AsyncMemoizer _catalogFetch = AsyncMemoizer();
   String? _searchQuery;
 
   @override
@@ -28,13 +28,12 @@ class _CatalogViewState extends State<CatalogView> {
       body: Column(
         children: [
           Expanded(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: SearchBox(
-                  onSearchChange: _execSearch,
-                ),
-              )),
+            flex: 1,
+            child: ListSearchRefreshView(
+              onTextSearch: _execSearch,
+              onRefreshDataPressed: _refreshData,
+            ),
+          ),
           Expanded(
             flex: 10,
             child: FutureBuilder(
@@ -57,6 +56,12 @@ class _CatalogViewState extends State<CatalogView> {
         ],
       ),
     );
+  }
+
+  void _refreshData() async {
+    setState(() {
+      _catalogFetch = AsyncMemoizer();
+    });
   }
 
   _execCatalogFetch() {
