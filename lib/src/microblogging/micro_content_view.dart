@@ -8,14 +8,16 @@ class MicroContentView extends StatefulWidget {
   final MicroBlogItem micro;
   final String? imageFolder;
   final bool fullHeader;
-  final VoidCallback onNavigateToMicro;
+  final VoidCallback? onNavigateToMicro;
+  final VoidCallback? onCopyPathToMicro;
 
   const MicroContentView(
       {Key? key,
       required this.micro,
       this.imageFolder,
       this.fullHeader = false,
-      required this.onNavigateToMicro})
+       this.onCopyPathToMicro,
+      this.onNavigateToMicro})
       : super(key: key);
 
   @override
@@ -57,7 +59,8 @@ class _MicroContentViewState extends State<MicroContentView> {
                             Text("*${links.indexOf(e).toString()}: "),
                             Expanded(
                               child: ElevatedButton(
-                                  child: Text(e), onPressed: () => _openLink(e)),
+                                  child: Text(e),
+                                  onPressed: () => _openLink(e)),
                             ),
                           ],
                         ),
@@ -68,13 +71,17 @@ class _MicroContentViewState extends State<MicroContentView> {
             ),
           Positioned.fill(
             child: Align(
-              alignment: Alignment.topRight,
+              alignment: Alignment.bottomRight,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  IconButton(
-                      onPressed: widget.onNavigateToMicro,
-                      icon: const Icon(Icons.open_in_new)),
+                  if (!expanded && widget.onNavigateToMicro != null)
+                    IconButton(
+                        onPressed: widget.onNavigateToMicro,
+                        icon: const Icon(Icons.open_in_new)),
+                  if (!expanded && widget.onCopyPathToMicro != null)
+                    IconButton(
+                        onPressed: widget.onCopyPathToMicro, icon: const Icon(Icons.copy)),
                   if (links.isNotEmpty)
                     IconButton(
                         onPressed: _expandPressed,
