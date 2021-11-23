@@ -64,7 +64,7 @@ class _MicroContentViewState extends State<MicroContentView> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        IconButton(onPressed: widget.onNavigateToMicro, icon: const Icon(Icons.link)),
+                        IconButton(onPressed: widget.onNavigateToMicro, icon: const Icon(Icons.open_in_new)),
                         if (widget.micro.links != null) IconButton(
                             onPressed: _expandPressed, icon: const Icon(Icons.info)),
                       ],
