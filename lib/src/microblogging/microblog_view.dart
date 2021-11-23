@@ -51,7 +51,11 @@ class _MicroBlogViewState extends State<MicroBlogView> {
         ],
       ),
       body: micro != null
-          ? FullMicroContentView(micro: micro)
+          ? FullMicroContentView(
+              micro: micro,
+              onCopyPathToMicro: () => _onCopyPathToMicro(
+                  context, indexOfMicro(micro, mcBlog!.micros)),
+            )
           : Column(
               children: [
                 Expanded(
@@ -197,9 +201,17 @@ class _MicroBlogViewState extends State<MicroBlogView> {
   }
 
   void _navigateToMicro(BuildContext context, int index) {
-    var reversedIndex = mcBlog!.micros.length - 1 - index;
+    var newIndex = reversedIndex(mcBlog!.micros, index);
     Navigator.restorablePushNamed(
-        context, "${MicroBlogView.routeName}/$reversedIndex");
+        context, "${MicroBlogView.routeName}/$newIndex");
+  }
+
+  int indexOfMicro(MicroBlogItem micro, List<MicroBlogItem> micros) {
+    return micros.indexOf(micro);
+  }
+
+  int reversedIndex(List<MicroBlogItem> micros, int index) {
+    return micros.length - 1 - index;
   }
 
   void _onCopyPathToMicro(BuildContext context, int index) {
