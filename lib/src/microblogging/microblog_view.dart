@@ -38,7 +38,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.labelAllPosts),
+        title: Text(widget.microId == null ? AppLocalizations.of(context)!.labelMetaProfile : "${AppLocalizations.of(context)!.titleMicroItemView} #${widget.microId}"),
         actions: [
           if (mcBlog != null)
             LanguageSelector(

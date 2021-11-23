@@ -7,10 +7,12 @@
   "profilePageTitle": "Profile Page",
   "experienceSummaryText": "Flutter Developer 💙. 8 years with JavaScript. 3 Years with Flutter :)",
   "viewMyArticles": "My articles",
-  "viewShortPosts": "Short posts",
+  "viewShortPosts": "Short posts (micros)",
   "viewExperiencePage": "Professional Experience",
   "labelLoading": "Loading",
   "labelAllPosts": "All Posts",
   "labelPublishedOn": "Published on",
-  "labelSearch": "Search"
+  "labelSearch": "Search",
+  "labelMetaProfile": "Meta Profile",
+  "titleMicroItemView": "Micro"
 }
