@@ -25,3 +25,28 @@ int gridPerAxisCount(BuildContext context) {
 
   return 2;
 }
+
+List<String> getUrlLinksFromMarkdown(String input) {
+  var first = input.indexOf("](");
+  if (first < 0) {
+    return [];
+  }
+  List<int> points = [];
+  int next = first;
+  while (next >= 0) {
+    points.add(next);
+    next = input.indexOf("](", next+1);
+  }
+
+  List<String> result = [];
+
+  for (var element in points) {
+    var endPoint = input.indexOf(")", element);
+    if (endPoint > 0) {
+      var string = input.substring(element + 2, input.indexOf(")", element));
+      result.add(string);
+    }
+  }
+
+  return result;
+}

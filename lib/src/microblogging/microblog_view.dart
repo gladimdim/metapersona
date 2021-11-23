@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:metapersona/src/components/language_selector.dart';
 import 'package:metapersona/src/components/list_search_refresh.dart';
 import 'package:metapersona/src/localization/my_localization.dart';
@@ -38,7 +39,9 @@ class _MicroBlogViewState extends State<MicroBlogView> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text(widget.microId == null ? AppLocalizations.of(context)!.labelMetaProfile : "${AppLocalizations.of(context)!.titleMicroItemView} #${widget.microId}"),
+        title: Text(widget.microId == null
+            ? AppLocalizations.of(context)!.labelMetaProfile
+            : "${AppLocalizations.of(context)!.titleMicroItemView} #${widget.microId}"),
         actions: [
           if (mcBlog != null)
             LanguageSelector(
@@ -48,7 +51,11 @@ class _MicroBlogViewState extends State<MicroBlogView> {
         ],
       ),
       body: micro != null
-          ? FullMicroContentView(micro: micro)
+          ? FullMicroContentView(
+              micro: micro,
+              onCopyPathToMicro: () => _onCopyPathToMicro(
+                  context, indexOfMicro(micro, mcBlog!.micros)),
+            )
           : Column(
               children: [
                 Expanded(
@@ -73,7 +80,10 @@ class _MicroBlogViewState extends State<MicroBlogView> {
                                 imageFolder: getRootUrlPrefix() +
                                     MicroBlogView.microsPath +
                                     MicroBlog.storageFolderPath,
-                                  onNavigateToMicro: () => _navigateToMicro(context, index),
+                                onNavigateToMicro: () =>
+                                    _navigateToMicro(context, index),
+                                onCopyPathToMicro: () =>
+                                    _onCopyPathToMicro(context, index),
                               ),
                             );
                           },
@@ -191,7 +201,25 @@ class _MicroBlogViewState extends State<MicroBlogView> {
   }
 
   void _navigateToMicro(BuildContext context, int index) {
+    var newIndex = reversedIndex(mcBlog!.micros, index);
+    Navigator.restorablePushNamed(
+        context, "${MicroBlogView.routeName}/$newIndex");
+  }
+
+  int indexOfMicro(MicroBlogItem micro, List<MicroBlogItem> micros) {
+    return micros.indexOf(micro);
+  }
+
+  int reversedIndex(List<MicroBlogItem> micros, int index) {
+    return micros.length - 1 - index;
+  }
+
+  void _onCopyPathToMicro(BuildContext context, int index) {
     var reversedIndex = mcBlog!.micros.length - 1 - index;
-    Navigator.restorablePushNamed(context, "${MicroBlogView.routeName}/$reversedIndex");
+    var suffix = "${MicroBlogView.routeName}/$reversedIndex";
+    var root = Uri.base.origin;
+    var prefix = getRootUrlPrefix();
+    var fullUrl = root + prefix + "#" + suffix;
+    Clipboard.setData(ClipboardData(text: fullUrl));
   }
 }
