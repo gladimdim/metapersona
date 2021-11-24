@@ -43,7 +43,7 @@ class _MicroBlogPageState extends State<MicroBlogPage> {
             ? AppLocalizations.of(context)!.labelMetaProfile
             : "${AppLocalizations.of(context)!.titleMicroItemView} #${widget.microId}"),
         actions: [
-          if (mcBlog != null)
+          if (mcBlog != null && widget.microId == null)
             LanguageSelector(
               languages: getAllLanguages(),
               onSelected: (newLangs) => _setSearchByLanguage(newLangs),
