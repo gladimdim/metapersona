@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:metapersona/src/microblogging/micro_content_view.dart';
 import 'package:metapersona/src/microblogging/microblog.dart';
-import 'package:metapersona/src/microblogging/microblog_view.dart';
+import 'package:metapersona/src/microblogging/microblog_page.dart';
 import 'package:metapersona/src/utils.dart';
 
 class FullMicroContentView extends StatelessWidget {
@@ -14,7 +14,7 @@ class FullMicroContentView extends StatelessWidget {
     return MicroContentView(
       micro: micro,
       imageFolder: getRootUrlPrefix() +
-          MicroBlogView.microsPath +
+          MicroBlogPage.microsPath +
           MicroBlog.storageFolderPath,
       onCopyPathToMicro: onCopyPathToMicro,
     );

@@ -8,19 +8,19 @@ import 'package:metapersona/src/microblogging/micro_content_view.dart';
 import 'package:metapersona/src/microblogging/microblog.dart';
 import 'package:metapersona/src/utils.dart';
 
-class MicroBlogView extends StatefulWidget {
+class MicroBlogPage extends StatefulWidget {
   static String routeName = "/micro";
   static String routePrefix = "/micro/";
   static String microsPath = "micro/";
   final String? microId;
 
-  const MicroBlogView({Key? key, this.microId}) : super(key: key);
+  const MicroBlogPage({Key? key, this.microId}) : super(key: key);
 
   @override
-  State<MicroBlogView> createState() => _MicroBlogViewState();
+  State<MicroBlogPage> createState() => _MicroBlogPageState();
 }
 
-class _MicroBlogViewState extends State<MicroBlogView> {
+class _MicroBlogPageState extends State<MicroBlogPage> {
   String? _searchQuery;
   MicroBlog? mcBlog;
   List<MicroBlogItem>? shownPosts;
@@ -53,8 +53,7 @@ class _MicroBlogViewState extends State<MicroBlogView> {
       body: micro != null
           ? FullMicroContentView(
               micro: micro,
-              onCopyPathToMicro: () => _onCopyPathToMicro(
-                  context, indexOfMicro(micro, mcBlog!.micros)),
+              onCopyPathToMicro: () => _onCopyPathToMicro(context, micro),
             )
           : Column(
               children: [
@@ -78,12 +77,12 @@ class _MicroBlogViewState extends State<MicroBlogView> {
                               child: MicroContentView(
                                 micro: shownPosts![index],
                                 imageFolder: getRootUrlPrefix() +
-                                    MicroBlogView.microsPath +
+                                    MicroBlogPage.microsPath +
                                     MicroBlog.storageFolderPath,
-                                onNavigateToMicro: () =>
-                                    _navigateToMicro(context, index),
-                                onCopyPathToMicro: () =>
-                                    _onCopyPathToMicro(context, index),
+                                onNavigateToMicro: () => _navigateToMicro(
+                                    context, shownPosts![index]),
+                                onCopyPathToMicro: () => _onCopyPathToMicro(
+                                    context, shownPosts![index]),
                               ),
                             );
                           },
@@ -200,10 +199,11 @@ class _MicroBlogViewState extends State<MicroBlogView> {
     });
   }
 
-  void _navigateToMicro(BuildContext context, int index) {
+  void _navigateToMicro(BuildContext context, MicroBlogItem micro) {
+    var index = indexOfMicro(micro, mcBlog!.micros);
     var newIndex = reversedIndex(mcBlog!.micros, index);
     Navigator.restorablePushNamed(
-        context, "${MicroBlogView.routeName}/$newIndex");
+        context, "${MicroBlogPage.routeName}/$newIndex");
   }
 
   int indexOfMicro(MicroBlogItem micro, List<MicroBlogItem> micros) {
@@ -214,9 +214,10 @@ class _MicroBlogViewState extends State<MicroBlogView> {
     return micros.length - 1 - index;
   }
 
-  void _onCopyPathToMicro(BuildContext context, int index) {
-    var reversedIndex = mcBlog!.micros.length - 1 - index;
-    var suffix = "${MicroBlogView.routeName}/$reversedIndex";
+  void _onCopyPathToMicro(BuildContext context, MicroBlogItem micro) {
+    var index = indexOfMicro(micro, mcBlog!.micros);
+    var fixedIndex = reversedIndex(mcBlog!.micros, index);
+    var suffix = "${MicroBlogPage.routeName}/$fixedIndex";
     var root = Uri.base.origin;
     var prefix = getRootUrlPrefix();
     var fullUrl = root + prefix + "#" + suffix;
