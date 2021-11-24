@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:metapersona/src/components/language_selector.dart';
 import 'package:metapersona/src/components/list_search_refresh.dart';
 import 'package:metapersona/src/localization/my_localization.dart';
-import 'package:metapersona/src/microblogging/full_micro_content_view.dart';
 import 'package:metapersona/src/microblogging/micro_content_view.dart';
 import 'package:metapersona/src/microblogging/microblog.dart';
 import 'package:metapersona/src/utils.dart';
@@ -51,9 +50,15 @@ class _MicroBlogPageState extends State<MicroBlogPage> {
         ],
       ),
       body: micro != null
-          ? FullMicroContentView(
-              micro: micro,
-              onCopyPathToMicro: () => _onCopyPathToMicro(context, micro),
+          ? Hero(
+              tag: micro.content,
+              child: MicroContentView(
+                micro: micro,
+                imageFolder: getRootUrlPrefix() +
+                    MicroBlogPage.microsPath +
+                    MicroBlog.storageFolderPath,
+                onCopyPathToMicro: () => _onCopyPathToMicro(context, micro),
+              ),
             )
           : Column(
               children: [
@@ -74,15 +79,18 @@ class _MicroBlogPageState extends State<MicroBlogPage> {
                             return ConstrainedBox(
                               constraints:
                                   BoxConstraints.loose(const Size(400, 300)),
-                              child: MicroContentView(
-                                micro: shownPosts![index],
-                                imageFolder: getRootUrlPrefix() +
-                                    MicroBlogPage.microsPath +
-                                    MicroBlog.storageFolderPath,
-                                onNavigateToMicro: () => _navigateToMicro(
-                                    context, shownPosts![index]),
-                                onCopyPathToMicro: () => _onCopyPathToMicro(
-                                    context, shownPosts![index]),
+                              child: Hero(
+                                tag: shownPosts![index].content,
+                                child: MicroContentView(
+                                  micro: shownPosts![index],
+                                  imageFolder: getRootUrlPrefix() +
+                                      MicroBlogPage.microsPath +
+                                      MicroBlog.storageFolderPath,
+                                  onNavigateToMicro: () => _navigateToMicro(
+                                      context, shownPosts![index]),
+                                  onCopyPathToMicro: () => _onCopyPathToMicro(
+                                      context, shownPosts![index]),
+                                ),
                               ),
                             );
                           },
