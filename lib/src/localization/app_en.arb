@@ -21,7 +21,7 @@
     "placeholders": {
       "days": {
         "type": "int",
-        "example": 8
+        "example": "8"
       }
     }
   }
