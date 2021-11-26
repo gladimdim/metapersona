@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:metapersona/src/catalog/date_published_view.dart';
 import 'package:metapersona/src/components/bordered_bottom.dart';
+import 'package:metapersona/src/localization/my_localization.dart';
 import 'package:metapersona/src/posts/catalog.dart';
 import 'package:metapersona/src/utils.dart';
 
@@ -30,6 +31,7 @@ class CatalogListItemView extends StatelessWidget {
             Expanded(
               flex: isNarrow(context) ? 5 : 7,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -58,7 +60,13 @@ class CatalogListItemView extends StatelessWidget {
                               child: Chip(label: Text(e, style: Theme.of(context).textTheme.bodyText2,), elevation: 5.0,),
                             ))
                         .toList(),
-                  )
+                  ),
+                  if (postItem.dateAdded != null) Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                        AppLocalizations.of(context)!.daysAgo(getDaysAgo(from: postItem.dateAdded !))),
+                  ),
+
                 ],
               ),
             ),
