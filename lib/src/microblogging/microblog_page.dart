@@ -57,6 +57,7 @@ class _MicroBlogPageState extends State<MicroBlogPage> {
                 imageFolder: getRootUrlPrefix() +
                     MicroBlogPage.microsPath +
                     MicroBlog.storageFolderPath,
+                microId: reversedIndexOfMicro(micro, mcBlog!.micros),
                 onCopyPathToMicro: () => _onCopyPathToMicro(context, micro),
               ),
             )
@@ -90,6 +91,8 @@ class _MicroBlogPageState extends State<MicroBlogPage> {
                                       context, shownPosts![index]),
                                   onCopyPathToMicro: () => _onCopyPathToMicro(
                                       context, shownPosts![index]),
+                                  microId: reversedIndexOfMicro(
+                                      shownPosts![index], mcBlog!.micros),
                                 ),
                               ),
                             );
@@ -216,6 +219,10 @@ class _MicroBlogPageState extends State<MicroBlogPage> {
 
   int indexOfMicro(MicroBlogItem micro, List<MicroBlogItem> micros) {
     return micros.indexOf(micro);
+  }
+
+  int reversedIndexOfMicro(MicroBlogItem micro, List<MicroBlogItem> micros) {
+    return reversedIndex(micros, indexOfMicro(micro, micros));
   }
 
   int reversedIndex(List<MicroBlogItem> micros, int index) {

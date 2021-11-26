@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:metapersona/src/components/markdown_viewer.dart';
+import 'package:metapersona/src/localization/my_localization.dart';
 import 'package:metapersona/src/microblogging/microblog.dart';
 import 'package:metapersona/src/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -8,6 +9,7 @@ class MicroContentView extends StatefulWidget {
   final MicroBlogItem micro;
   final String? imageFolder;
   final bool fullHeader;
+  final int microId;
   final VoidCallback? onNavigateToMicro;
   final VoidCallback? onCopyPathToMicro;
 
@@ -16,7 +18,8 @@ class MicroContentView extends StatefulWidget {
       required this.micro,
       this.imageFolder,
       this.fullHeader = false,
-       this.onCopyPathToMicro,
+      this.onCopyPathToMicro,
+      required this.microId,
       this.onNavigateToMicro})
       : super(key: key);
 
@@ -34,7 +37,6 @@ class _MicroContentViewState extends State<MicroContentView> {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-
           if (!expanded)
             Expanded(
               flex: 5,
@@ -52,19 +54,26 @@ class _MicroContentViewState extends State<MicroContentView> {
                         ),
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          if (!expanded && widget.onNavigateToMicro != null)
-                            IconButton(
-                                onPressed: widget.onNavigateToMicro,
-                                icon: const Icon(Icons.open_in_new)),
-                          if (!expanded && widget.onCopyPathToMicro != null)
-                            IconButton(
-                                onPressed: widget.onCopyPathToMicro, icon: const Icon(Icons.copy)),
-                          if (links.isNotEmpty)
-                            IconButton(
-                                onPressed: _expandPressed,
-                                icon: const Icon(Icons.info)),
+                          if (widget.micro.publishedOn != null) Text(
+                              "#${widget.microId}. ${AppLocalizations.of(context)!.daysAgo(getDaysAgo(from: widget.micro.publishedOn!))}"),
+                          Wrap(
+                            children: [
+                              if (!expanded && widget.onNavigateToMicro != null)
+                                IconButton(
+                                    onPressed: widget.onNavigateToMicro,
+                                    icon: const Icon(Icons.open_in_new)),
+                              if (!expanded && widget.onCopyPathToMicro != null)
+                                IconButton(
+                                    onPressed: widget.onCopyPathToMicro,
+                                    icon: const Icon(Icons.copy)),
+                              if (links.isNotEmpty)
+                                IconButton(
+                                    onPressed: _expandPressed,
+                                    icon: const Icon(Icons.info)),
+                            ],
+                          ),
                         ],
                       ),
                     ],
@@ -99,14 +108,14 @@ class _MicroContentViewState extends State<MicroContentView> {
                 ),
               ),
             ),
-          if (expanded) Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
+          if (expanded)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
                 IconButton(
-                    onPressed: _expandPressed,
-                    icon: const Icon(Icons.info)),
-            ],
-          ),
+                    onPressed: _expandPressed, icon: const Icon(Icons.info)),
+              ],
+            ),
         ],
       ),
     );
