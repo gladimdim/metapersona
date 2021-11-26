@@ -14,5 +14,15 @@
   "labelPublishedOn": "Published on",
   "labelSearch": "Search",
   "labelMetaProfile": "Meta Profile",
-  "titleMicroItemView": "Micro"
+  "titleMicroItemView": "Micro",
+  "daysAgo": "{days} days ago",
+  "@daysAgo": {
+    "description": "Days ago label",
+    "placeholders": {
+      "days": {
+        "type": "int",
+        "example": 8
+      }
+    }
+  }
 }
