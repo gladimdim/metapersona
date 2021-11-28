@@ -7,7 +7,7 @@ class DatePublishedView extends StatelessWidget {
   final DateTime date;
 
   DatePublishedView({Key? key, required this.date}) : super(key: key);
-  final DateFormat format = DateFormat("yyyy-MM");
+  final DateFormat format = DateFormat("yyyy-MM-dd");
   @override
   Widget build(BuildContext context) {
     return Row(
