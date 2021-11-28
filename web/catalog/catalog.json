@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "id": "review_dou_1",
+      "title": "Рецензія #1 на ДОУ Подкаст",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2021-10-02",
+      "tags": [
+        "огляд",
+        "dou"
+      ]
+    },
+    {
       "id": "dead_simple_example_using_keys",
       "title": "Dead Simple Example of Using Keys in Flutter Widgets",
       "thumbnail": "thumbnail.png",
@@ -24,7 +34,7 @@
       "id": "flutter_animate_interactive_viewer_as_map",
       "title": "Flutter: How to Animate Movement of InteractiveViewer From One Point to Another on a Map",
       "thumbnail": "thumbnail.png",
-      "dateAdded": "2021-10-02",
+      "dateAdded": "2021-09-02",
       "tags": [
         "flutter",
         "dart",
