@@ -1,10 +1,16 @@
 {
   "micros": [
     {
+      "content": "# Нова стаття про важливість освіти. \n\n ![KPI_Logo.png](kpi_logo.png)Вирішив зробити невеличку статтю про те, чому технічна освіта потрібна, і чому не варто новому поколінню розповідати, що студентські роки треба проводити на галері, чи в якихось шарагах заробляючи гроші, а не вештаться по КПІ чи Шеві, бо там 'нічому не вчать.'. \n\n Чому ж там насправді вчать спробуємо розібратися зовсім скоро.",
+      "dateAdded": "2021-11-28",
+      "languageEmoji": "\uD83C\uDDFA\uD83C\uDDE6"
+    },
+    {
       "content": "# Рецензія #1 на ДОУ Подкаст \n\n Вирішив зробити відповідь на злочинні думки оголошені в ДОУ подкасті. \n\n Повна версія тут: [https://dmytrogladkyi.com/#/catalog/posts/review_dou_1](https://dmytrogladkyi.com/#/catalog/posts/review_dou_1)",
       "dateAdded": "2021-11-25",
       "languageEmoji": "\uD83C\uDDFA\uD83C\uDDE6"
-    },  {
+    },
+    {
       "content": "# Remake of Sloboda in Unity\n\nLast time I checked stats of my games on Google Play was a month ago or so ⌛️.\n\n![Google Play Stats](google_play_stats.png)\n\n[Sloboda](https://locadeserta.com/citybuilding) is still my #1 game.\n\nBy amount of effort put into it and by amount of features \uD83D\uDE0E\n\nI plan to remake this game but this time instead of [Flutter \uD83D\uDC99](https://flutter.dev) I will use Unity.\n\n# Why Unity?\n\nI spent a month learning and creating game with Unreal Engine. I found that blueprints is not for me.\nNot even mentioning that C++ is also not for me :) Also the Engine has too many settings, ways of doing it and so on.\n\n## So, why not Unreal Engine?\n\n- Blueprints madness\n- C++\n- Too many settings for everything in Editor\n- Terrible official tutorials\n- Too few amateur tutorials\n- Tooling that does not work (could not compile it for Android)\n- Shaders compilations can take an hour\n\n## I prefer Unity because:\n\n- C#\n- simpler editor\n- AMAZING official Tutorials\n- all questions answered on youtube by creator.\n- Tooling that just works. Two clicks and I deployed app to Android and iOS devices in 2 minutes.\n\nC#, on contra with C++, is the same as Dart. Which I love. Sometimes I even copy-paste code from Flutter into\nUnity C# scripts and it requires only slight changes in order to compile.\n\n## Progress report\n\nMy new game can already:\n\n- upgrade/build buildings\n- character movement with joytstick\n- can pick/drop resources from floor\n- can move resources\n\n![Sloboda Unity](sloboda_unity_pick.png)\n\nI plan to borrow gameplay mechanics from [Unrailed!](https://store.steampowered.com/app/1016920/Unrailed/)\n\n### Where to get news?\n\nI host a Telegram channel (Ukrainian): [Loca Deserta](https://t.me/locadesertachumaki). Тут постю постійно апдейти з відосами :)\n\nYou can also follow me on (Dmytro Gladkyi Twitter)[https://twitter.com/dmytrogladkyi].\n\n",
       "dateAdded": "2021-11-25",
       "languageEmoji": "\uD83C\uDDFA\uD83C\uDDF8"
