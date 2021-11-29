@@ -12,7 +12,7 @@ So I went to Kids Shop and took thousands of pics of toys to feed it to Tensor F
 
 After I trained the model and could use it in the shop. The app announced me the name of the recognized cartoon hero.
 
-It was pretty need and my kids enjoyed playing with it :)
+It was pretty neat and my kids enjoyed playing with it :)
 
 ![screen1.png](screen1.png)
 
@@ -22,7 +22,7 @@ My day job is creating complex software for Manufacturing Industry.
 
 One day this idea literally hit me: why can't I use the same approach to instantly recognize defects in the manufactured goods?
 
-Inspection operation usually involves operators and takes much longer time then desired. Operators have to visually check the items and then enter defects info.
+Inspection operation usually involves operators and takes much longer time than desired. Operators have to visually check the items and then enter defects info.
 
 This process is cumbersome.
 
@@ -59,15 +59,13 @@ And dozens of other tasks nobody predicted had to be done.
 # 2 years later
 
 What we achieved:
-- recognition almost on all Industry 4.0 forums
+- recognition on almost all Industry 4.0 forums
 - our demo was the most loved and impressive.
 - demo to...founding father of the company 😭
 
 # Difference between small companies and large corps
 
-As almost everything done in corps is hidden behind the wall. You cannot watch videos about the success.
-
-Almost all of such important things are done by silent heroes, not by the dev rels with patreon links you see on youtube.
+Almost everything done in corps is hidden behind the wall. You cannot watch videos about the success.
 
 On the screen below you can a person using the product I (we) bootstrapped and created on a real prod line.
 
@@ -77,12 +75,11 @@ On the screen below you can a person using the product I (we) bootstrapped and c
 
 # Conclusion
 
-There lots of awesome developers doing awesome stuff but who never get recognized because they work on a not hyped technology.
-Or they do not post daily youtube videos with FP vs OOP or other meaningless thoughts like lots of modern Thought Leaders do.
-
-I was very lucky that all stars were in right position and I could find right colleagues in right place. Plus the support for upper management.
+I was very lucky that all stars were in right position and I could find right colleagues in right place. Plus the support of upper management.
 
 All these three pillars played well and now at least one tiny pain point of manufacturing is solved.
+
+(For our customers, of course 😁 )
 
 # Link to original picture:
 
