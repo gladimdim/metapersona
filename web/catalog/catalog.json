@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "id": "why_education",
+      "title": "Про важливість освіти.",
+      "markdownContentUrl": "content.md",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "kpi_logo.png",
+      "dateAdded": "2021-11-30",
+      "tags": [
+        "думка",
+        "істина"
+      ]
+    },
+    {
       "id": "personal_huge_milestone",
       "title": "Personal huge milestone",
       "thumbnail": "screen3.png",
