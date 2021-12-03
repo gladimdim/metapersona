@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "id": "flutter_web_showcase_1",
+      "title": "Flutter Web Showcases",
+      "markdownContentUrl": "content.md",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2021-12-03",
+      "tags": [
+        "flutter",
+        "web"
+      ]
+    },
+    {
       "id": "why_education",
       "title": "Про важливість освіти.",
       "markdownContentUrl": "content.md",

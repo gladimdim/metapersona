@@ -1,0 +1,11 @@
+{
+  "id": "flutter_web_showcase_1",
+  "title": "Flutter Web Showcases",
+  "thumbnail": "thumbnail.png",
+  "dateAdded": "2021-12-03",
+  "markdownContentUrl": "content.md",
+  "tags": [
+    "flutter",
+    "web"
+  ]
+}
