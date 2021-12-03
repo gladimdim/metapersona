@@ -82,6 +82,8 @@ Still wip.. Not mobile friendly, yet..!***
 
 Link to Author's Twitter: [https://twitter.com/scabhilash](https://twitter.com/scabhilash)
 
+--- 
+
 # Set of Flutter Web 💙🕸️ games by Dmytro Gladkyi
 
 My game universe called [Loca Deserta](https://locadeserta.com/index_en) already contains 4 games all done with Flutter.
