@@ -27,19 +27,19 @@ class MicroBlog {
 class MicroBlogItem {
   final String content;
   final String? thumbnail;
-  final DateTime? publishedOn;
+  final DateTime? dateAdded;
   final String? languageEmoji;
   static const String defaultLanguage = "🇺🇸";
 
-  MicroBlogItem({required this.content, this.thumbnail, this.publishedOn, this.languageEmoji});
+  MicroBlogItem({required this.content, this.thumbnail, this.dateAdded, this.languageEmoji});
 
   static MicroBlogItem fromJson(Map<String, dynamic> input) {
-    var dateTimeString = input["publishedOn"];
+    var dateTimeString = input["dateAdded"];
     DateTime? date;
     if (dateTimeString != null) {
       date = DateTime.parse(dateTimeString);
     }
     var lang =  input["languageEmoji"] ?? MicroBlogItem.defaultLanguage;
-    return MicroBlogItem(content: input["content"], thumbnail: input["thumbnail"], publishedOn: date, languageEmoji: lang);
+    return MicroBlogItem(content: input["content"], thumbnail: input["thumbnail"], dateAdded: date, languageEmoji: lang);
   }
 }

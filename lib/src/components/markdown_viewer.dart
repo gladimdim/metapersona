@@ -19,18 +19,24 @@ class MarkdownViewer extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: flutter_markdown.loadLibrary(),
-      builder: (context, data) => flutter_markdown.Markdown(
-        padding: contentPadding,
-        onTapLink: (text, link, title) async {
-          if (link == null) {
-            return;
-          }
-          await launch(link);
-        },
-        selectable: true,
-        data: content,
-        imageDirectory: imageDirectory,
-      ),
+      builder: (context, data) {
+        if (data.connectionState == ConnectionState.done) {
+          return flutter_markdown.Markdown(
+            padding: contentPadding,
+            onTapLink: (text, link, title) async {
+              if (link == null) {
+                return;
+              }
+              await launch(link);
+            },
+            selectable: true,
+            data: content,
+            imageDirectory: imageDirectory,
+          );
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      },
     );
   }
 }

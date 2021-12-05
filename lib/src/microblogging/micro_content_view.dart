@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:metapersona/src/catalog/date_published_view.dart';
 import 'package:metapersona/src/components/markdown_viewer.dart';
 import 'package:metapersona/src/microblogging/microblog.dart';
 import 'package:metapersona/src/utils.dart';
@@ -8,16 +9,17 @@ class MicroContentView extends StatefulWidget {
   final MicroBlogItem micro;
   final String? imageFolder;
   final bool fullHeader;
+  final int microId;
   final VoidCallback? onNavigateToMicro;
   final VoidCallback? onCopyPathToMicro;
 
-  const MicroContentView(
-      {Key? key,
-      required this.micro,
-      this.imageFolder,
-      this.fullHeader = false,
-       this.onCopyPathToMicro,
-      this.onNavigateToMicro})
+  const MicroContentView({Key? key,
+    required this.micro,
+    this.imageFolder,
+    this.fullHeader = false,
+    this.onCopyPathToMicro,
+    required this.microId,
+    this.onNavigateToMicro})
       : super(key: key);
 
   @override
@@ -34,7 +36,6 @@ class _MicroContentViewState extends State<MicroContentView> {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-
           if (!expanded)
             Expanded(
               flex: 5,
@@ -44,27 +45,34 @@ class _MicroContentViewState extends State<MicroContentView> {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      Expanded(
-                        flex: 5,
-                        child: MarkdownViewer(
-                          content: widget.micro.content,
-                          imageDirectory: widget.imageFolder,
+                    Expanded(
+                    flex: 5,
+                    child: MarkdownViewer(
+                      content: widget.micro.content,
+                      imageDirectory: widget.imageFolder,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      if (widget.micro.dateAdded != null)
+                        DatePublishedView(date: widget.micro.dateAdded!),
+                        Wrap(
+                          children: [
+                            if (!expanded && widget.onNavigateToMicro != null)
+                              IconButton(
+                                  onPressed: widget.onNavigateToMicro,
+                                  icon: const Icon(Icons.open_in_new)),
+                            if (!expanded && widget.onCopyPathToMicro != null)
+                              IconButton(
+                                  onPressed: widget.onCopyPathToMicro,
+                                  icon: const Icon(Icons.copy)),
+                            if (links.isNotEmpty)
+                              IconButton(
+                                  onPressed: _expandPressed,
+                                  icon: const Icon(Icons.info)),
+                          ],
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          if (!expanded && widget.onNavigateToMicro != null)
-                            IconButton(
-                                onPressed: widget.onNavigateToMicro,
-                                icon: const Icon(Icons.open_in_new)),
-                          if (!expanded && widget.onCopyPathToMicro != null)
-                            IconButton(
-                                onPressed: widget.onCopyPathToMicro, icon: const Icon(Icons.copy)),
-                          if (links.isNotEmpty)
-                            IconButton(
-                                onPressed: _expandPressed,
-                                icon: const Icon(Icons.info)),
                         ],
                       ),
                     ],
@@ -81,7 +89,8 @@ class _MicroContentViewState extends State<MicroContentView> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: links
                       .map(
-                        (e) => Padding(
+                        (e) =>
+                        Padding(
                           padding: const EdgeInsets.symmetric(vertical: 2.0),
                           child: Row(
                             children: [
@@ -94,19 +103,19 @@ class _MicroContentViewState extends State<MicroContentView> {
                             ],
                           ),
                         ),
-                      )
+                  )
                       .toList(),
                 ),
               ),
             ),
-          if (expanded) Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
+          if (expanded)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
                 IconButton(
-                    onPressed: _expandPressed,
-                    icon: const Icon(Icons.info)),
-            ],
-          ),
+                    onPressed: _expandPressed, icon: const Icon(Icons.info)),
+              ],
+            ),
         ],
       ),
     );

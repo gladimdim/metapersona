@@ -50,3 +50,11 @@ List<String> getUrlLinksFromMarkdown(String input) {
 
   return result;
 }
+
+int getDaysAgo({required DateTime from}) {
+  var now = DateTime.now();
+
+  var diff = now.difference(from);
+  return diff.inDays;
+
+}

@@ -30,10 +30,12 @@ class CatalogListItemView extends StatelessWidget {
             Expanded(
               flex: isNarrow(context) ? 5 : 7,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.end,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         BorderedBottom(
                           color: Colors.grey[200]!,
@@ -55,10 +57,16 @@ class CatalogListItemView extends StatelessWidget {
                     children: postItem.tags
                         .map((e) => Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Chip(label: Text(e, style: Theme.of(context).textTheme.bodyText2,), elevation: 5.0,),
+                              child: Chip(
+                                label: Text(
+                                  e,
+                                  style: Theme.of(context).textTheme.bodyText2,
+                                ),
+                                elevation: 5.0,
+                              ),
                             ))
                         .toList(),
-                  )
+                  ),
                 ],
               ),
             ),
