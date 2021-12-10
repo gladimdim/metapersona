@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "id": "review_dou_2",
+      "title": "Рецензія #2 на ДОУ Подкаст #34",
+      "markdownContentUrl": "content.md",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2021-12-10",
+      "tags": [
+        "dou",
+        "огляд"
+      ]
+    },
+    {
       "id": "flutter_web_showcase_1",
       "title": "Flutter Web Showcases",
       "markdownContentUrl": "content.md",
