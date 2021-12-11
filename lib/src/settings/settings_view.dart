@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:metapersona/src/localization/my_localization.dart';
+
 import 'settings_controller.dart';
 
 class SettingsView extends StatelessWidget {
