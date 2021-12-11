@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:metapersona/src/utils.dart';
+import 'package:metapersona/src/JsonParser.dart';
 
 class MicroBlog {
   final List<MicroBlogItem> micros;
@@ -14,8 +14,8 @@ class MicroBlog {
   static Future<MicroBlog> initFromUrl(String url) async {
     final response = await http.get(Uri.parse("${url}micro/micros.json"));
     final utf8Body = utf8.decode(response.bodyBytes);
-    final parser = Parser(utf8Body);
-    final Map<String, dynamic> parsedBody = await parser.parseJsonInIsolate() as Map<String, dynamic>;
+
+    final parsedBody = await Parser().parseJsonInIsolate(utf8Body);
     return MicroBlog.fromJson(parsedBody);
   }
 

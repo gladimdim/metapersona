@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:isolate';
-
 import 'package:flutter/cupertino.dart';
 
 String getRootUrlPrefix() {
@@ -62,18 +59,3 @@ int getDaysAgo({required DateTime from}) {
 
 }
 
-class Parser {
-  Parser(this.jsonString);
-  final String jsonString;
-
-  Future<Map> parseJsonInIsolate() async {
-    final p = ReceivePort();
-    await Isolate.spawn(_parseJson, p.sendPort);
-    return await p.first;
-  }
-
-  Future _parseJson(SendPort p) async {
-    final data = jsonDecode(jsonString);
-    Isolate.exit(p, data);
-  }
-}
