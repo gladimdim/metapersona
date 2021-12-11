@@ -11,7 +11,8 @@ class Catalog {
   static Future<Catalog> initFromUrl(String url) async {
     final response = await http.get(Uri.parse("${url}catalog/catalog.json"));
     final utf8Body = utf8.decode(response.bodyBytes);
-    final parsedBody = jsonDecode(utf8Body);
+    final parser = Parser(utf8Body);
+    final parsedBody = await parser.parseJsonInIsolate();
     final List jsonPosts = parsedBody["posts"] as List;
     final List<CatalogPostItem> posts = jsonPosts.map((e) => CatalogPostItem.fromJson(e)).toList();
     return Catalog(posts: posts);
