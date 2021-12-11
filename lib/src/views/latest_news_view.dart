@@ -52,7 +52,8 @@ class _LatestNewsViewState extends State<LatestNewsView> {
                           final CatalogPostItem postItem =
                               data.data as CatalogPostItem;
                           return ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 400),
+                            constraints:
+                            BoxConstraints.tight(const Size(400, 200)),
                             child: InkWell(
                               child: CatalogListItemView(postItem: postItem),
                               onTap: () {
@@ -86,7 +87,7 @@ class _LatestNewsViewState extends State<LatestNewsView> {
                               data.data as MicroBlogItem;
                           return ConstrainedBox(
                             constraints:
-                                BoxConstraints.loose(const Size(400, 300)),
+                                BoxConstraints.tight(const Size(400, 200)),
                             child: InkWell(
                               child: MicroContentView(
                                 micro: postItem,
