@@ -15,6 +15,11 @@
   "labelSearch": "Шукати",
   "labelMetaProfile": "Мета профіль",
   "titleMicroItemView": "Мікро",
+  "labelLatestNews": "Останні новини",
+  "labelLoadingCatalog": "Завантаження каталогу статей",
+  "labelFailedToFetchCatalog": "Помилка при завантаженні каталогу",
+  "labelLoadingMicros": "Завантаження мікросів",
+  "labelFailedToFetchMicros": "Помилка завантаження мікросів",
   "daysAgo": "{days} днів тому",
   "@daysAgo": {
     "description": "Лейбли з днями тому",

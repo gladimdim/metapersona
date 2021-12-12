@@ -30,91 +30,93 @@ class MainProfileView extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              BorderedBottom(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                BorderedBottom(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(45),
+                            ),
+                            child: Image.asset(
+                              "assets/images/profile/green_round_avatar.jpg",
+                              width: 128,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Text(
+                                "Dmytro Gladkyi",
+                                style: Theme.of(context).textTheme.headline6,
+                              ),
+                              Text(
+                                "Flutter Developer 💙 since 2018",
+                                style: Theme.of(context).textTheme.subtitle1,
+                              ),
+                              Text(
+                                "JavaScript developer since 2012",
+                                style: Theme.of(context).textTheme.subtitle1,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
                   children: [
                     Expanded(
                       flex: 1,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(45),
-                          ),
-                          child: Image.asset(
-                            "assets/images/profile/green_round_avatar.jpg",
-                            width: 128,
-                          ),
+                        child: MainMenuCardItem(
+
+                          child: Text(AppLocalizations.of(context)!.viewMyArticles, style: Theme.of(context).textTheme.subtitle1,),
+                          onPress: () => _viewMyPostsPressed(context),
                         ),
                       ),
                     ),
                     Expanded(
-                      flex: 5,
+                      flex: 1,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Text(
-                              "Dmytro Gladkyi",
-                              style: Theme.of(context).textTheme.headline6,
-                            ),
-                            Text(
-                              "Flutter Developer 💙 since 2018",
-                              style: Theme.of(context).textTheme.subtitle1,
-                            ),
-                            Text(
-                              "JavaScript developer since 2012",
-                              style: Theme.of(context).textTheme.subtitle1,
-                            ),
-                          ],
+                        child: MainMenuCardItem(
+
+                          child: Text(AppLocalizations.of(context)!.viewShortPosts, style: Theme.of(context).textTheme.subtitle1,),
+                          onPress: () => _viewMicros(context),
                         ),
                       ),
                     ),
                   ],
                 ),
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: MainMenuCardItem(
-
-                        child: Text(AppLocalizations.of(context)!.viewMyArticles, style: Theme.of(context).textTheme.subtitle1,),
-                        onPress: () => _viewMyPostsPressed(context),
-                      ),
-                    ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MainMenuCardItem(
+                    child: Text(AppLocalizations.of(context)!.viewExperiencePage, style: Theme.of(context).textTheme.subtitle1,),
+                    onPress: () => _viewExperience(context),
                   ),
-                  Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: MainMenuCardItem(
-
-                        child: Text(AppLocalizations.of(context)!.viewShortPosts, style: Theme.of(context).textTheme.subtitle1,),
-                        onPress: () => _viewMicros(context),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: MainMenuCardItem(
-                  child: Text(AppLocalizations.of(context)!.viewExperiencePage, style: Theme.of(context).textTheme.subtitle1,),
-                  onPress: () => _viewExperience(context),
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: LatestNewsView(),
-              ),
-            ],
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: LatestNewsView(),
+                ),
+              ],
+            ),
           ),
         ),
       ),

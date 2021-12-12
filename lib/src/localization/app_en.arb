@@ -15,6 +15,11 @@
   "labelSearch": "Search",
   "labelMetaProfile": "Meta Profile",
   "titleMicroItemView": "Micro",
+  "labelLatestNews": "Latest News",
+  "labelLoadingCatalog": "Loading latest catalog items",
+  "labelFailedToFetchCatalog": "Failed to fetch catalog items",
+  "labelLoadingMicros": "Loading latest micros",
+  "labelFailedToFetchMicros": "Failed to fetch micros",
   "daysAgo": "{days} days ago",
   "@daysAgo": {
     "description": "Days ago label",

@@ -80,19 +80,24 @@ class _MicroBlogPageState extends State<MicroBlogPage> {
                             return ConstrainedBox(
                               constraints:
                                   BoxConstraints.loose(const Size(400, 300)),
-                              child: Hero(
-                                tag: shownPosts![index].content,
-                                child: MicroContentView(
-                                  micro: shownPosts![index],
-                                  imageFolder: getRootUrlPrefix() +
-                                      MicroBlogPage.microsPath +
-                                      MicroBlog.storageFolderPath,
-                                  onNavigateToMicro: () => _navigateToMicro(
-                                      context, shownPosts![index]),
-                                  onCopyPathToMicro: () => _onCopyPathToMicro(
-                                      context, shownPosts![index]),
-                                  microId: reversedIndexOfMicro(
-                                      shownPosts![index], mcBlog!.micros),
+                              child: InkWell(
+                                onTap: () => _navigateToMicro(
+                                    context, shownPosts![index]),
+                                child: Hero(
+                                  tag: shownPosts![index].content,
+                                  child: MicroContentView(
+                                    disableMiniScroll: true,
+                                    micro: shownPosts![index],
+                                    imageFolder: getRootUrlPrefix() +
+                                        MicroBlogPage.microsPath +
+                                        MicroBlog.storageFolderPath,
+                                    onNavigateToMicro: () => _navigateToMicro(
+                                        context, shownPosts![index]),
+                                    onCopyPathToMicro: () => _onCopyPathToMicro(
+                                        context, shownPosts![index]),
+                                    microId: reversedIndexOfMicro(
+                                        shownPosts![index], mcBlog!.micros),
+                                  ),
                                 ),
                               ),
                             );
