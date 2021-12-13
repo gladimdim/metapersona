@@ -1,0 +1,12 @@
+{
+  "id": "dart_process_exceptions_in_isolates",
+  "title": "Dart: How to handle exceptions raised inside Isolates",
+  "markdownContentUrl": "content.md",
+  "author": "Dmytro Gladkyi",
+  "thumbnail": "thumbnail.png",
+  "dateAdded": "2021-12-13",
+  "tags": [
+    "dart",
+    "flutter"
+  ]
+}
