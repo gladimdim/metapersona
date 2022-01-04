@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:metapersona/src/full_profile_view/full_profile_view.dart';
+import 'package:metapersona/src/localization/my_localization.dart';
 import 'package:metapersona/src/metapersonas/meta_persona.dart';
 import 'package:metapersona/src/metapersonas/metapersona_view.dart';
 import 'package:metapersona/src/utils.dart';
@@ -20,6 +21,9 @@ class _MetaPersonasPageState extends State<MetaPersonasPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.labelListMetaPersonas),
+      ),
       body: Center(
         child: Column(
           children: [
@@ -32,8 +36,8 @@ class _MetaPersonasPageState extends State<MetaPersonasPage> {
                       flex: 9,
                       child: TextField(
                         controller: _textEditingController,
-                        decoration: const InputDecoration(
-                            hintText: "Enter full URL to the Meta Persona"),
+                        decoration: InputDecoration(
+                            hintText: AppLocalizations.of(context)!.hintEnterFullMetaPersonaUrl),
                       ),
                     ),
                     Expanded(
