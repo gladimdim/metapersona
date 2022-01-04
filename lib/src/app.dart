@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:metapersona/src/catalog/catalog_view.dart';
 import 'package:metapersona/src/experience/experience_page.dart';
-import 'package:metapersona/src/main_view/main_profile_view.dart';
+import 'package:metapersona/src/full_profile_view/full_profile_view.dart';
 import 'package:metapersona/src/metapersonas/metapersonas_page.dart';
 import 'package:metapersona/src/microblogging/microblog_page.dart';
 import 'package:metapersona/src/posts/post_view.dart';
@@ -69,8 +69,8 @@ class MetaPersonaApp extends StatelessWidget {
                   if (routeSettings.name == SettingsView.routeName) {
                     return SettingsView(controller: settingsController);
                   }
-                  if (MainProfileView.routeName == routeSettings.name) {
-                    return const MainProfileView();
+                  if (FullProfileView.routeName == routeSettings.name) {
+                    return const FullProfileView();
                   }
                   if (CatalogView.routeName == routeSettings.name) {
                     return const CatalogView();
@@ -81,10 +81,11 @@ class MetaPersonaApp extends StatelessWidget {
                   if (MicroBlogPage.routeName == routeSettings.name) {
                     return const MicroBlogPage();
                   }
-                  if (MainProfileView.routeName == routeSettings.name) {
-                    return const MainProfileView();
+                  if (FullProfileView.routeName == routeSettings.name) {
+                    return const FullProfileView();
                   }
-                  return const MetaPersonasPage();
+                  // return const MetaPersonasPage();
+                  return const FullProfileView();
                 });
           },
         );

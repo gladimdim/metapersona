@@ -4,15 +4,32 @@ import 'package:metapersona/src/catalog/catalog_view.dart';
 import 'package:metapersona/src/components/bordered_bottom.dart';
 import 'package:metapersona/src/components/main_view_card_item.dart';
 import 'package:metapersona/src/experience/experience_page.dart';
+import 'package:metapersona/src/metapersonas/meta_persona.dart';
 import 'package:metapersona/src/microblogging/microblog_page.dart';
 import 'package:metapersona/src/settings/settings_view.dart';
 import 'package:metapersona/src/views/latest_news_view.dart';
 
-class MainProfileView extends StatelessWidget {
+class FullProfileView extends StatefulWidget {
+  final MetaPersona? persona;
   static const String routeName = "/fullProfileView";
 
-  const MainProfileView({Key? key}) : super(key: key);
+  const FullProfileView({Key? key, this.persona}) : super(key: key);
 
+  @override
+  State<FullProfileView> createState() => _FullProfileViewState();
+}
+
+class _FullProfileViewState extends State<FullProfileView> {
+  MetaPersona? persona;
+  @override
+  void initState() {
+    super.initState();
+    persona = widget.persona;
+
+    if (persona ==  null) {
+      initDefaultPersona();
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +47,7 @@ class MainProfileView extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: SingleChildScrollView(
+          child: persona == null ? const CircularProgressIndicator() : SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -121,6 +138,13 @@ class MainProfileView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future initDefaultPersona() async {
+    var mp = await MetaPersona.initFromUrl("https://dmytrogladkyi.com");
+    setState(() {
+      persona = mp;
+    });
   }
 
   void _viewMyPostsPressed(BuildContext context) {

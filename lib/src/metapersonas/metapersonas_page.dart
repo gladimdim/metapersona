@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:metapersona/src/full_profile_view/full_profile_view.dart';
 import 'package:metapersona/src/metapersonas/meta_persona.dart';
 import 'package:metapersona/src/metapersonas/metapersona_view.dart';
 import 'package:metapersona/src/utils.dart';
@@ -49,7 +50,14 @@ class _MetaPersonasPageState extends State<MetaPersonasPage> {
             Expanded(
               child: ListView(
                 children: metaPersonas.values
-                    .map((mp) => MetaPersonaView(persona: mp))
+                    .map(
+                      (mp) => InkWell(
+                        child: MetaPersonaView(persona: mp),
+                        onTap: () {
+                          _navigateToMetaPersonaProfile(mp);
+                        },
+                      ),
+                    )
                     .toList(),
               ),
             ),
@@ -64,5 +72,11 @@ class _MetaPersonasPageState extends State<MetaPersonasPage> {
     setState(() {
       metaPersonas[mp.fullPath] = mp;
     });
+  }
+
+  void _navigateToMetaPersonaProfile(MetaPersona mp) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return FullProfileView(persona: mp);
+    }));
   }
 }
