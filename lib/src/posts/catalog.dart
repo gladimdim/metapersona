@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:metapersona/src/json_parser.dart';
+import 'package:metapersona/src/metapersonas/meta_persona.dart';
 import 'package:metapersona/src/utils.dart';
 class Catalog {
   final List<CatalogPostItem> posts;
@@ -10,7 +11,7 @@ class Catalog {
   const Catalog({required this.posts});
 
   static Future<Catalog> initFromUrl(String url) async {
-    final response = await http.get(Uri.parse("${url}catalog/catalog.json"));
+    final response = await http.get(Uri.parse("$url/catalog/catalog.json"));
     final utf8Body = utf8.decode(response.bodyBytes);
     final parsedBody = await Parser().parseJsonInIsolate(utf8Body);
     final List jsonPosts = parsedBody["posts"] as List;
@@ -26,8 +27,8 @@ class CatalogPostItem {
   DateTime? dateAdded;
   final List<String> tags;
 
-  String? getFullThumbnail() {
-    return thumbnail == null ? null : "${getRootUrlPrefix()}catalog/posts/$id/$thumbnail";
+  String? getFullThumbnail(MetaPersona? persona) {
+    return thumbnail == null ? null : "${getRootUrlPrefix(persona)}/catalog/posts/$id/$thumbnail";
   }
 
   CatalogPostItem({

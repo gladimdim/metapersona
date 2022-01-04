@@ -22,6 +22,8 @@ class MetaPersona {
   final String fullPath;
   final Profile profile;
 
+  String get fullName => "${profile.firstName} ${profile.lastName}";
+
   const MetaPersona(this.fullPath, {required this.profile});
 
   String get fullAvatarPath => "$fullPath/${profile.avatarPath}";

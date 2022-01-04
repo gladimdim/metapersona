@@ -11,7 +11,7 @@ import 'package:metapersona/src/views/latest_news_view.dart';
 
 class FullProfileView extends StatefulWidget {
   final MetaPersona? persona;
-  static const String routeName = "/fullProfileView";
+  static const String routeName = "/#";
 
   const FullProfileView({Key? key, this.persona}) : super(key: key);
 
@@ -21,15 +21,13 @@ class FullProfileView extends StatefulWidget {
 
 class _FullProfileViewState extends State<FullProfileView> {
   MetaPersona? persona;
+
   @override
   void initState() {
     super.initState();
     persona = widget.persona;
-
-    if (persona ==  null) {
-      initDefaultPersona();
-    }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +45,7 @@ class _FullProfileViewState extends State<FullProfileView> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: persona == null ? const CircularProgressIndicator() : SingleChildScrollView(
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -77,7 +75,7 @@ class _FullProfileViewState extends State<FullProfileView> {
                           child: Column(
                             children: [
                               Text(
-                                "Dmytro Gladkyi",
+                                persona?.fullName ?? "Dmytro Gladkyi",
                                 style: Theme.of(context).textTheme.headline6,
                               ),
                               Text(
@@ -102,8 +100,10 @@ class _FullProfileViewState extends State<FullProfileView> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: MainMenuCardItem(
-
-                          child: Text(AppLocalizations.of(context)!.viewMyArticles, style: Theme.of(context).textTheme.subtitle1,),
+                          child: Text(
+                            AppLocalizations.of(context)!.viewMyArticles,
+                            style: Theme.of(context).textTheme.subtitle1,
+                          ),
                           onPress: () => _viewMyPostsPressed(context),
                         ),
                       ),
@@ -113,8 +113,10 @@ class _FullProfileViewState extends State<FullProfileView> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: MainMenuCardItem(
-
-                          child: Text(AppLocalizations.of(context)!.viewShortPosts, style: Theme.of(context).textTheme.subtitle1,),
+                          child: Text(
+                            AppLocalizations.of(context)!.viewShortPosts,
+                            style: Theme.of(context).textTheme.subtitle1,
+                          ),
                           onPress: () => _viewMicros(context),
                         ),
                       ),
@@ -124,13 +126,18 @@ class _FullProfileViewState extends State<FullProfileView> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: MainMenuCardItem(
-                    child: Text(AppLocalizations.of(context)!.viewExperiencePage, style: Theme.of(context).textTheme.subtitle1,),
+                    child: Text(
+                      AppLocalizations.of(context)!.viewExperiencePage,
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
                     onPress: () => _viewExperience(context),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: LatestNewsView(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: LatestNewsView(
+                          persona: persona,
+                        ),
                 ),
               ],
             ),
@@ -148,14 +155,39 @@ class _FullProfileViewState extends State<FullProfileView> {
   }
 
   void _viewMyPostsPressed(BuildContext context) {
-    Navigator.restorablePushNamed(context, CatalogView.routeName);
+    if (persona == null) {
+      Navigator.restorablePushNamed(context, CatalogView.routeName);
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CatalogView(
+            persona: persona!,
+          ),
+        ),
+      );
+    }
   }
 
   void _viewMicros(BuildContext context) {
-    Navigator.restorablePushNamed(context, MicroBlogPage.routeName);
+    if (persona == null) {
+      Navigator.restorablePushNamed(context, MicroBlogPage.routeName);
+    } else {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => MicroBlogPage(persona: persona!)));
+    }
   }
 
   void _viewExperience(BuildContext context) {
-    Navigator.restorablePushNamed(context, ExperiencePage.routeName);
+    if (persona == null) {
+      Navigator.restorablePushNamed(context, ExperiencePage.routeName);
+    } else {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ExperiencePage(persona: persona!)));
+    }
   }
 }

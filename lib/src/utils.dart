@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:metapersona/src/metapersonas/meta_persona.dart';
 
-String getRootUrlPrefix() {
-  return "/";
+String getRootUrlPrefix([MetaPersona? persona]) {
+  var personaPath = persona?.fullPath;
+  return personaPath != null ? personaPath + "/" : "";
 }
 const cWidthThreshold = 800;
 

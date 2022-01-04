@@ -3,6 +3,7 @@ import 'package:async/async.dart';
 import 'package:metapersona/src/catalog/catalog_list_item_view.dart';
 import 'package:metapersona/src/catalog/catalog_view.dart';
 import 'package:metapersona/src/localization/my_localization.dart';
+import 'package:metapersona/src/metapersonas/meta_persona.dart';
 import 'package:metapersona/src/microblogging/micro_content_view.dart';
 import 'package:metapersona/src/microblogging/microblog.dart';
 import 'package:metapersona/src/microblogging/microblog_page.dart';
@@ -10,7 +11,9 @@ import 'package:metapersona/src/posts/catalog.dart';
 import 'package:metapersona/src/utils.dart';
 
 class LatestNewsView extends StatefulWidget {
-  const LatestNewsView({Key? key}) : super(key: key);
+  final MetaPersona? persona;
+
+  const LatestNewsView({Key? key, this.persona}) : super(key: key);
 
   @override
   State<LatestNewsView> createState() => _LatestNewsViewState();
@@ -54,10 +57,22 @@ class _LatestNewsViewState extends State<LatestNewsView> {
                           constraints:
                               BoxConstraints.tight(const Size(400, 200)),
                           child: InkWell(
-                            child: CatalogListItemView(postItem: postItem),
+                            child: CatalogListItemView(
+                              postItem: postItem,
+                              persona: widget.persona,
+                            ),
                             onTap: () {
-                              Navigator.restorablePushNamed(context,
-                                  "${CatalogView.routeName}/posts/${postItem.id}");
+                              if (widget.persona == null) {
+                                Navigator.restorablePushNamed(context,
+                                    "${CatalogView.routeName}/posts/${postItem.id}");
+                              } else {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CatalogView(
+                                              persona: widget.persona!,
+                                            )));
+                              }
                             },
                           ),
                         );
@@ -89,15 +104,24 @@ class _LatestNewsViewState extends State<LatestNewsView> {
                             child: IgnorePointer(
                               child: MicroContentView(
                                 micro: postItem,
-                                imageFolder: getRootUrlPrefix() +
+                                imageFolder: getRootUrlPrefix(widget.persona) +
                                     MicroBlogPage.microsPath +
                                     MicroBlog.storageFolderPath,
                                 microId: 0,
                               ),
                             ),
                             onTap: () {
-                              Navigator.restorablePushNamed(
-                                  context, MicroBlogPage.routeName);
+                              if (widget.persona == null) {
+                                Navigator.restorablePushNamed(
+                                    context, MicroBlogPage.routeName);
+                              } else {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MicroBlogPage(
+                                          persona: widget.persona!)),
+                                );
+                              }
                             },
                           ),
                         );
@@ -118,14 +142,14 @@ class _LatestNewsViewState extends State<LatestNewsView> {
 
   Future<CatalogPostItem> _fetchCatalog() async {
     final Catalog catalog = await _catalogFetch
-        .runOnce(() => Catalog.initFromUrl(getRootUrlPrefix()));
+        .runOnce(() => Catalog.initFromUrl(getRootUrlPrefix(widget.persona)));
 
     return catalog.posts.first;
   }
 
   Future<MicroBlogItem> _fetchMicros() async {
     final MicroBlog result = await _microsFetch
-        .runOnce(() => MicroBlog.initFromUrl(getRootUrlPrefix()));
+        .runOnce(() => MicroBlog.initFromUrl(getRootUrlPrefix(widget.persona)));
     return result.micros.first;
   }
 }

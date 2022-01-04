@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:metapersona/src/components/markdown_viewer.dart';
+import 'package:metapersona/src/metapersonas/meta_persona.dart';
 import 'package:metapersona/src/posts/post.dart';
 import 'package:metapersona/src/utils.dart';
 import 'package:share_plus/share_plus.dart' deferred as share_plus;
@@ -12,12 +13,15 @@ class PostView extends StatelessWidget {
   static String postsPath = "catalog/posts/";
   final String postId;
 
-  const PostView({Key? key, required this.postId}) : super(key: key);
+  final MetaPersona? persona;
+
+  const PostView({Key? key, required this.postId, this.persona})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Post.fromIdUrl(getRootUrlPrefix() + postsPath, postId),
+      future: Post.fromIdUrl(getRootUrlPrefix(persona) + postsPath, postId),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
@@ -37,8 +41,11 @@ class PostView extends StatelessWidget {
             body: Center(
               child: MarkdownViewer(
                 content: "# ${post.title}\n" + post.markdownContent,
-                imageDirectory: getRootUrlPrefix() + postsPath + postId,
-                contentPadding: EdgeInsets.symmetric(horizontal: isNarrow(context)? 8.0 : calculatePaddings(context)),
+                imageDirectory:
+                    getRootUrlPrefix(persona) + postsPath + postId + "/",
+                contentPadding: EdgeInsets.symmetric(
+                    horizontal:
+                        isNarrow(context) ? 8.0 : calculatePaddings(context)),
               ),
             ),
           );
@@ -60,11 +67,17 @@ class PostView extends StatelessWidget {
   }
 
   void _copyLink(Post post) {
-    Clipboard.setData(ClipboardData(text: Uri.base.toString()));
+    Clipboard.setData(ClipboardData(text: getFullPostUrl()));
   }
 
   void _sharePost(Post post) async {
     await share_plus.loadLibrary();
-    share_plus.Share.share(Uri.base.toString(), subject: post.title);
+    share_plus.Share.share(getFullPostUrl(), subject: post.title);
+  }
+
+  String getFullPostUrl() {
+    return persona == null
+        ? Uri.base.toString()
+        : getRootUrlPrefix(persona) + "#/" + postsPath + postId;
   }
 }

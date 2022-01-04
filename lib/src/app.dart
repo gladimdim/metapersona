@@ -60,7 +60,7 @@ class MetaPersonaApp extends StatelessWidget {
                       0) {
                     final split =
                         routeSettings.name!.split(PostView.routeNamePrefix)[1];
-                    return PostView(postId: split);
+                    return PostView(postId: split.split("/").last);
                   }
                   if (routeSettings.name!.indexOf(MicroBlogPage.routePrefix) == 0) {
                     final split = routeSettings.name!.split(MicroBlogPage.routePrefix)[1];
@@ -81,11 +81,8 @@ class MetaPersonaApp extends StatelessWidget {
                   if (MicroBlogPage.routeName == routeSettings.name) {
                     return const MicroBlogPage();
                   }
-                  if (FullProfileView.routeName == routeSettings.name) {
-                    return const FullProfileView();
-                  }
-                  // return const MetaPersonasPage();
-                  return const FullProfileView();
+                  return const MetaPersonasPage();
+                  // return const FullProfileView();
                 });
           },
         );
