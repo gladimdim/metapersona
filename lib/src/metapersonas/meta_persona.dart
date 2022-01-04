@@ -9,7 +9,7 @@ class Profile {
   final String lastName;
   final String avatarFileName;
 
-  String get fullAvatarPath => "$profileRoot/$avatarFileName";
+  String get avatarPath => "$profileRoot/$avatarFileName";
 
   const Profile({required this.firstName, required this.lastName, required this.avatarFileName});
 
@@ -23,6 +23,8 @@ class MetaPersona {
   final Profile profile;
 
   const MetaPersona(this.fullPath, {required this.profile});
+
+  String get fullAvatarPath => "$fullPath/${profile.avatarPath}";
 
   static Future<MetaPersona> initFromUrl(String fullPath) async {
     var profileResponse =
