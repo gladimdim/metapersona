@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:metapersona/src/JsonParser.dart';
+import 'package:metapersona/src/json_parser.dart';
 import 'package:metapersona/src/utils.dart';
 class Catalog {
   final List<CatalogPostItem> posts;

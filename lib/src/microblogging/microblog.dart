@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:metapersona/src/JsonParser.dart';
+import 'package:metapersona/src/json_parser.dart';
 
 class MicroBlog {
   final List<MicroBlogItem> micros;

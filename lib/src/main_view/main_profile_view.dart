@@ -9,7 +9,7 @@ import 'package:metapersona/src/settings/settings_view.dart';
 import 'package:metapersona/src/views/latest_news_view.dart';
 
 class MainProfileView extends StatelessWidget {
-  static const String routeName = "/";
+  static const String routeName = "/mainProfile";
 
   const MainProfileView({Key? key}) : super(key: key);
 
