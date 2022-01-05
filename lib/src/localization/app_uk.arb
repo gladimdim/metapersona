@@ -29,5 +29,7 @@
         "example": "8"
       }
     }
-  }
+  },
+  "labelListMetaPersonas": "Список Мета Персон",
+  "hintEnterFullMetaPersonaUrl": "Введіть повну адресу Мета Персони"
 }

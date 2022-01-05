@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:metapersona/src/catalog/responsive_catalog_list_view.dart';
 import 'package:metapersona/src/components/list_search_refresh.dart';
+import 'package:metapersona/src/metapersonas/meta_persona.dart';
 import 'package:metapersona/src/posts/catalog.dart';
+import 'package:metapersona/src/posts/post_view.dart';
 import 'package:metapersona/src/utils.dart';
 
 class CatalogView extends StatefulWidget {
-  const CatalogView({Key? key}) : super(key: key);
+  const CatalogView({Key? key, this.persona}) : super(key: key);
   static String routeName = "/catalog";
+  final MetaPersona? persona;
 
   @override
   State<CatalogView> createState() => _CatalogViewState();
@@ -46,6 +49,7 @@ class _CatalogViewState extends State<CatalogView> {
                   return ResponsiveCatalogListView(
                     posts: viewablePosts,
                     onItemClicked: (post) => onListItemClicked(post, context),
+                    persona: widget.persona,
                   );
                 } else {
                   return const CircularProgressIndicator();
@@ -65,7 +69,8 @@ class _CatalogViewState extends State<CatalogView> {
   }
 
   _execCatalogFetch() {
-    return _catalogFetch.runOnce(() => Catalog.initFromUrl(getRootUrlPrefix()));
+    return _catalogFetch
+        .runOnce(() => Catalog.initFromUrl(getRootUrlPrefix(widget.persona)));
   }
 
   List<CatalogPostItem> filteredItems(List<CatalogPostItem> allPosts) {
@@ -94,7 +99,19 @@ class _CatalogViewState extends State<CatalogView> {
   }
 
   void onListItemClicked(CatalogPostItem post, BuildContext context) {
-    Navigator.restorablePushNamed(
-        context, "${CatalogView.routeName}/posts/${post.id}");
+    if (widget.persona == null) {
+      Navigator.restorablePushNamed(
+          context, "${PostView.routeNamePrefix}${post.id}");
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PostView(
+            persona: widget.persona!,
+            postId: post.id,
+          ),
+        ),
+      );
+    }
   }
 }

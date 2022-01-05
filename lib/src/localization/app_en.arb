@@ -29,5 +29,7 @@
         "example": "8"
       }
     }
-  }
+  },
+  "labelListMetaPersonas": "List of Watched Meta Personas",
+  "hintEnterFullMetaPersonaUrl": "Enter full URL of Meta Persona"
 }

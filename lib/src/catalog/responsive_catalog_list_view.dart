@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:metapersona/src/catalog/catalog_list_item_view.dart';
+import 'package:metapersona/src/metapersonas/meta_persona.dart';
 import 'package:metapersona/src/posts/catalog.dart';
 import 'package:metapersona/src/utils.dart';
 import 'package:metapersona/src/extensions/list.dart';
@@ -7,9 +8,9 @@ import 'package:metapersona/src/extensions/list.dart';
 class ResponsiveCatalogListView extends StatelessWidget {
   final List<CatalogPostItem> posts;
   final Function(CatalogPostItem) onItemClicked;
-
+  final MetaPersona? persona;
   const ResponsiveCatalogListView(
-      {Key? key, required this.posts, required this.onItemClicked})
+      {Key? key, required this.posts, required this.onItemClicked, this.persona})
       : super(key: key);
 
   @override
@@ -30,7 +31,7 @@ class ResponsiveCatalogListView extends StatelessWidget {
                       onTap: () => onItemClicked(
                         post,
                       ),
-                      child: CatalogListItemView(postItem: post),
+                      child: CatalogListItemView(postItem: post, persona: persona,),
                     ),
                   ),
                 ),

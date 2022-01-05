@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:metapersona/src/components/language_selector.dart';
 import 'package:metapersona/src/components/list_search_refresh.dart';
 import 'package:metapersona/src/localization/my_localization.dart';
+import 'package:metapersona/src/metapersonas/meta_persona.dart';
 import 'package:metapersona/src/microblogging/micro_content_view.dart';
 import 'package:metapersona/src/microblogging/microblog.dart';
 import 'package:metapersona/src/utils.dart';
@@ -13,7 +14,9 @@ class MicroBlogPage extends StatefulWidget {
   static String microsPath = "micro/";
   final String? microId;
 
-  const MicroBlogPage({Key? key, this.microId}) : super(key: key);
+  final MetaPersona? persona;
+
+  const MicroBlogPage({Key? key, this.microId, this.persona}) : super(key: key);
 
   @override
   State<MicroBlogPage> createState() => _MicroBlogPageState();
@@ -54,7 +57,8 @@ class _MicroBlogPageState extends State<MicroBlogPage> {
               tag: micro.content,
               child: MicroContentView(
                 micro: micro,
-                imageFolder: getRootUrlPrefix() +
+                imageFolder: getRootUrlPrefix(widget.persona) +
+                    "/" +
                     MicroBlogPage.microsPath +
                     MicroBlog.storageFolderPath,
                 microId: reversedIndexOfMicro(micro, mcBlog!.micros),
@@ -88,9 +92,11 @@ class _MicroBlogPageState extends State<MicroBlogPage> {
                                   child: MicroContentView(
                                     disableMiniScroll: true,
                                     micro: shownPosts![index],
-                                    imageFolder: getRootUrlPrefix() +
-                                        MicroBlogPage.microsPath +
-                                        MicroBlog.storageFolderPath,
+                                    imageFolder:
+                                        getRootUrlPrefix(widget.persona) +
+                                            "/" +
+                                            MicroBlogPage.microsPath +
+                                            MicroBlog.storageFolderPath,
                                     onNavigateToMicro: () => _navigateToMicro(
                                         context, shownPosts![index]),
                                     onCopyPathToMicro: () => _onCopyPathToMicro(
@@ -154,7 +160,8 @@ class _MicroBlogPageState extends State<MicroBlogPage> {
   }
 
   _execCatalogFetch() async {
-    final result = await MicroBlog.initFromUrl(getRootUrlPrefix());
+    final result =
+        await MicroBlog.initFromUrl(getRootUrlPrefix(widget.persona));
     setState(() {
       mcBlog = result;
       _languages = getAllLanguages();
@@ -218,8 +225,18 @@ class _MicroBlogPageState extends State<MicroBlogPage> {
   void _navigateToMicro(BuildContext context, MicroBlogItem micro) {
     var index = indexOfMicro(micro, mcBlog!.micros);
     var newIndex = reversedIndex(mcBlog!.micros, index);
-    Navigator.restorablePushNamed(
-        context, "${MicroBlogPage.routeName}/$newIndex");
+    if (widget.persona == null) {
+      Navigator.restorablePushNamed(
+          context, "${MicroBlogPage.routeName}/$newIndex");
+    } else {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => MicroBlogPage(
+                    microId: newIndex.toString(),
+                    persona: widget.persona!,
+                  )));
+    }
   }
 
   int indexOfMicro(MicroBlogItem micro, List<MicroBlogItem> micros) {
@@ -238,9 +255,9 @@ class _MicroBlogPageState extends State<MicroBlogPage> {
     var index = indexOfMicro(micro, mcBlog!.micros);
     var fixedIndex = reversedIndex(mcBlog!.micros, index);
     var suffix = "${MicroBlogPage.routeName}/$fixedIndex";
-    var root = Uri.base.origin;
-    var prefix = getRootUrlPrefix();
-    var fullUrl = root + prefix + "#" + suffix;
+    var root =
+        widget.persona == null ? Uri.base.origin : widget.persona!.fullPath;
+    var fullUrl = root + "/" + "#" + suffix;
     Clipboard.setData(ClipboardData(text: fullUrl));
   }
 }

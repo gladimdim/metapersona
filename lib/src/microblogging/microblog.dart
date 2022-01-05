@@ -1,18 +1,18 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:metapersona/src/JsonParser.dart';
+import 'package:metapersona/src/json_parser.dart';
 
 class MicroBlog {
   final List<MicroBlogItem> micros;
-  static const storageFolderPath = "storage";
+  static const storageFolderPath = "storage/";
 
   MicroBlog({required this.micros});
 
   static String path = "micro";
 
   static Future<MicroBlog> initFromUrl(String url) async {
-    final response = await http.get(Uri.parse("${url}micro/micros.json"));
+    final response = await http.get(Uri.parse("${url}/micro/micros.json"));
     final utf8Body = utf8.decode(response.bodyBytes);
 
     final parsedBody = await Parser().parseJsonInIsolate(utf8Body);

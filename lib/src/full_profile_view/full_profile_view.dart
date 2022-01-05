@@ -4,14 +4,29 @@ import 'package:metapersona/src/catalog/catalog_view.dart';
 import 'package:metapersona/src/components/bordered_bottom.dart';
 import 'package:metapersona/src/components/main_view_card_item.dart';
 import 'package:metapersona/src/experience/experience_page.dart';
+import 'package:metapersona/src/metapersonas/meta_persona.dart';
 import 'package:metapersona/src/microblogging/microblog_page.dart';
 import 'package:metapersona/src/settings/settings_view.dart';
 import 'package:metapersona/src/views/latest_news_view.dart';
 
-class MainProfileView extends StatelessWidget {
-  static const String routeName = "/";
+class FullProfileView extends StatefulWidget {
+  final MetaPersona? persona;
+  static const String routeName = "/#";
 
-  const MainProfileView({Key? key}) : super(key: key);
+  const FullProfileView({Key? key, this.persona}) : super(key: key);
+
+  @override
+  State<FullProfileView> createState() => _FullProfileViewState();
+}
+
+class _FullProfileViewState extends State<FullProfileView> {
+  MetaPersona? persona;
+
+  @override
+  void initState() {
+    super.initState();
+    persona = widget.persona;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +75,7 @@ class MainProfileView extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                "Dmytro Gladkyi",
+                                persona?.fullName ?? "Dmytro Gladkyi",
                                 style: Theme.of(context).textTheme.headline6,
                               ),
                               Text(
@@ -85,8 +100,10 @@ class MainProfileView extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: MainMenuCardItem(
-
-                          child: Text(AppLocalizations.of(context)!.viewMyArticles, style: Theme.of(context).textTheme.subtitle1,),
+                          child: Text(
+                            AppLocalizations.of(context)!.viewMyArticles,
+                            style: Theme.of(context).textTheme.subtitle1,
+                          ),
                           onPress: () => _viewMyPostsPressed(context),
                         ),
                       ),
@@ -96,8 +113,10 @@ class MainProfileView extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: MainMenuCardItem(
-
-                          child: Text(AppLocalizations.of(context)!.viewShortPosts, style: Theme.of(context).textTheme.subtitle1,),
+                          child: Text(
+                            AppLocalizations.of(context)!.viewShortPosts,
+                            style: Theme.of(context).textTheme.subtitle1,
+                          ),
                           onPress: () => _viewMicros(context),
                         ),
                       ),
@@ -107,13 +126,18 @@ class MainProfileView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: MainMenuCardItem(
-                    child: Text(AppLocalizations.of(context)!.viewExperiencePage, style: Theme.of(context).textTheme.subtitle1,),
+                    child: Text(
+                      AppLocalizations.of(context)!.viewExperiencePage,
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
                     onPress: () => _viewExperience(context),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: LatestNewsView(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: LatestNewsView(
+                          persona: persona,
+                        ),
                 ),
               ],
             ),
@@ -123,15 +147,47 @@ class MainProfileView extends StatelessWidget {
     );
   }
 
+  Future initDefaultPersona() async {
+    var mp = await MetaPersona.initFromUrl("https://dmytrogladkyi.com");
+    setState(() {
+      persona = mp;
+    });
+  }
+
   void _viewMyPostsPressed(BuildContext context) {
-    Navigator.restorablePushNamed(context, CatalogView.routeName);
+    if (persona == null) {
+      Navigator.restorablePushNamed(context, CatalogView.routeName);
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CatalogView(
+            persona: persona!,
+          ),
+        ),
+      );
+    }
   }
 
   void _viewMicros(BuildContext context) {
-    Navigator.restorablePushNamed(context, MicroBlogPage.routeName);
+    if (persona == null) {
+      Navigator.restorablePushNamed(context, MicroBlogPage.routeName);
+    } else {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => MicroBlogPage(persona: persona!)));
+    }
   }
 
   void _viewExperience(BuildContext context) {
-    Navigator.restorablePushNamed(context, ExperiencePage.routeName);
+    if (persona == null) {
+      Navigator.restorablePushNamed(context, ExperiencePage.routeName);
+    } else {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ExperiencePage(persona: persona!)));
+    }
   }
 }

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:metapersona/src/experience/position.dart';
+import 'package:metapersona/src/metapersonas/meta_persona.dart';
 import 'package:metapersona/src/utils.dart';
 import 'package:timelines/timelines.dart';
 
@@ -10,8 +11,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ExperiencePage extends StatelessWidget {
   static const String routeName = "/experience";
-
-  const ExperiencePage({Key? key}) : super(key: key);
+  final MetaPersona? persona;
+  const ExperiencePage({Key? key, this.persona}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +99,7 @@ class ExperiencePage extends StatelessWidget {
 
   Future<Map<String, dynamic>> _fetchExperience() async {
     final response = await http.get(
-        Uri.parse("${getRootUrlPrefix()}profile/experience/experiences.json"));
+        Uri.parse("${getRootUrlPrefix(persona)}/profile/experience/experiences.json"));
     final body = response.body;
     return jsonDecode(body);
   }
