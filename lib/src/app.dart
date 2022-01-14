@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:metapersona/src/catalog/catalog_view.dart';
 import 'package:metapersona/src/experience/experience_page.dart';
 import 'package:metapersona/src/full_profile_view/full_profile_view.dart';
-import 'package:metapersona/src/metapersonas/metapersonas_page.dart';
 import 'package:metapersona/src/microblogging/microblog_page.dart';
 import 'package:metapersona/src/posts/post_view.dart';
 
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MetaPersonaApp extends StatelessWidget {
   const MetaPersonaApp({
@@ -81,8 +80,8 @@ class MetaPersonaApp extends StatelessWidget {
                   if (MicroBlogPage.routeName == routeSettings.name) {
                     return const MicroBlogPage();
                   }
-                  return const MetaPersonasPage();
-                  // return const FullProfileView();
+                  // return const MetaPersonasPage();
+                  return const FullProfileView();
                 });
           },
         );

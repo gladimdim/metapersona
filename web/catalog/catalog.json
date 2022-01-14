@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "id": "performance_improvements_in_mobile_unity",
+      "title": "Performance gains in Unity. How I went from 15 to 60 FPS",
+      "markdownContentUrl": "content.md",
+      "dateAdded": "2022-01-14",
+      "thumbnail": "sich_screen.png",
+      "tags": [
+        "unity",
+        "c#"
+      ]
+    },
+    {
       "id": "ukrtwi_tragedy",
       "title": "Трагедія нашого інфопростору (на прикладі укртві)",
       "markdownContentUrl": "content.md",
