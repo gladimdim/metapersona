@@ -15,7 +15,7 @@ I took a very old Nokia 6.1 with Android, launched my game and was shocked. It w
 
 ## How did I find bottlenecks
 
-Off course I launched a Profiler and checked what was choking in my Nokia 6.1/Galaxy Note 8
+Of course I launched a Profiler and checked what was choking in my Nokia 6.1/Galaxy Note 8
 
 You can see that the game ran at max 30 FPS, even fewer.
 
@@ -180,6 +180,14 @@ The first version of my game has features from a 'real' full-sized game you used
 You can learn more and download my old Sloboda game here: [Loca Deserta: Sloboda](https://locadeserta.com/citybuilding/index_en)
 
 ![sich_screen](sich_screen.png)
+
+# Follow for Progress on the Remake
+
+You can join my Telegram Channel: [https://t.me/locadesertachumaki](Loca Deserta Game Universe). Or [https://t.me/locadesertachumaki/467](Try alpha 3 on Android, Web and Windows).
+
+Or follow me on Twitter: [https://twitter.com/DmytroGladkyi](https://twitter.com/DmytroGladkyi)
+
+
 
 
 
