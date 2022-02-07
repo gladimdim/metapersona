@@ -7,14 +7,14 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.15.0-262.0.dev <3.0.0"
+  sdk: ">=2.16.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  shared_preferences: ^2.0.8
+  shared_preferences: ^2.0.13
   flutter_markdown: ^0.6.8
   url_launcher: ^6.0.12
   http: ^0.13.4
