@@ -1,6 +1,30 @@
 {
   "posts": [
     {
+      "id": "independent_states",
+      "title": "Незалежні держави будуть мати свій ламповий інтернетик",
+      "markdownContentUrl": "content.md",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.jpg",
+      "dateAdded": "2022-02-17",
+      "tags": [
+        "життя",
+        "технології"
+      ]
+    },
+    {
+      "id": "aborigeni",
+      "title": "Еволюція від аборигенів",
+      "markdownContentUrl": "content.md",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.jpg",
+      "dateAdded": "2022-02-17",
+      "tags": [
+        "життя",
+        "буття"
+      ]
+    },
+    {
       "id": "dash-memo-leak",
       "title": "What Would Happen if Dash Memo Leak Had Never Happened?",
       "markdownContentUrl": "content.md",
