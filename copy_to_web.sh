@@ -1,2 +1,2 @@
-flutter build web --dart-define=FLUTTER_WEB_USE_SKIA=true
+flutter build web --web-renderer canvaskit --release
 cp -r build/web/** ../dmytrogladkyi_metapersona/
