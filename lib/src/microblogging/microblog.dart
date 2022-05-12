@@ -12,7 +12,7 @@ class MicroBlog {
   static String path = "micro";
 
   static Future<MicroBlog> initFromUrl(String url) async {
-    final response = await http.get(Uri.parse("${url}/micro/micros.json"));
+    final response = await http.get(Uri.parse("$url/micro/micros.json"));
     final utf8Body = utf8.decode(response.bodyBytes);
 
     final parsedBody = await Parser().parseJsonInIsolate(utf8Body);

@@ -20,8 +20,8 @@ class LatestNewsView extends StatefulWidget {
 }
 
 class _LatestNewsViewState extends State<LatestNewsView> {
-  AsyncMemoizer _catalogFetch = AsyncMemoizer();
-  AsyncMemoizer _microsFetch = AsyncMemoizer();
+  final AsyncMemoizer _catalogFetch = AsyncMemoizer();
+  final AsyncMemoizer _microsFetch = AsyncMemoizer();
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,6 @@ import 'package:metapersona/src/full_profile_view/full_profile_view.dart';
 import 'package:metapersona/src/localization/my_localization.dart';
 import 'package:metapersona/src/metapersonas/meta_persona.dart';
 import 'package:metapersona/src/metapersonas/metapersona_view.dart';
-import 'package:metapersona/src/utils.dart';
 
 class MetaPersonasPage extends StatefulWidget {
   static const String routeName = "/";
