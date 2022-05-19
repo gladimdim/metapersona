@@ -40,7 +40,7 @@ class PostView extends StatelessWidget {
             ),
             body: Center(
               child: MarkdownViewer(
-                content: "# ${post.title}\n" + post.markdownContent,
+                content: post.markdownContent,
                 imageDirectory:
                     getRootUrlPrefix(persona) + postsPath + postId + "/",
                 contentPadding: EdgeInsets.symmetric(

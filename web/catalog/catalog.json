@@ -1,6 +1,19 @@
 {
   "posts": [
     {
+      "id": "unity_replace_coroutine_with_tap",
+      "title": "Replacing Coroutines in Unity with C# Task Async Pattern (TAP)",
+      "markdownContentUrl": "content.md",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2022-05-19",
+      "tags": [
+        "c#",
+        "unity",
+        "gamedev"
+      ]
+    },
+    {
       "id": "independent_states",
       "title": "Незалежні держави будуть мати свій ламповий інтернетик",
       "markdownContentUrl": "content.md",
