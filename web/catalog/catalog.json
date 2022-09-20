@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "id": "games_marketing",
+      "title": "Думки про маркетинг інді ігр (очима ютюберів)",
+      "markdownContentUrl": "content.md",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.png",
+      "dateAdded": "2022-09-20",
+      "tags": [
+        "gamedev",
+        "marketing",
+        "unity"
+      ]
+    }, {
       "id": "unity_monobehaviour_events_magic",
       "title": "The Magic of Start/Update Events in Unity's MonoBehaviour",
       "markdownContentUrl": "content.md",
