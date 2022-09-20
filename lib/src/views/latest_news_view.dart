@@ -55,7 +55,7 @@ class _LatestNewsViewState extends State<LatestNewsView> {
                             data.data as CatalogPostItem;
                         return ConstrainedBox(
                           constraints:
-                              BoxConstraints.tight(const Size(400, 200)),
+                              BoxConstraints.tight(const Size(500, 200)),
                           child: InkWell(
                             child: CatalogListItemView(
                               postItem: postItem,
@@ -99,7 +99,7 @@ class _LatestNewsViewState extends State<LatestNewsView> {
                             data.data as MicroBlogItem;
                         return ConstrainedBox(
                           constraints:
-                              BoxConstraints.tight(const Size(400, 200)),
+                              BoxConstraints.tight(const Size(500, 200)),
                           child: InkWell(
                             child: IgnorePointer(
                               child: MicroContentView(
