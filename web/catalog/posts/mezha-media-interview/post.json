@@ -1,0 +1,13 @@
+{
+  "id": "mezha-media-interview",
+  "title": "Інтерв'ю для Межа.Медіа",
+  "markdownContentUrl": "content.md",
+  "author": "Dmytro Gladkyi",
+  "thumbnail": "thumbnail.png",
+  "dateAdded": "2022-12-01",
+  "tags": [
+    "gamedev",
+    "unity",
+    "ігри"
+  ]
+}
