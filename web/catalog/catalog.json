@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "id": "gothic_remake_sich",
+      "title": "Ремейк Готіки-Січ",
+      "markdownContentUrl": "content.md",
+      "author": "Dmytro Gladkyi",
+      "thumbnail": "thumbnail.jpeg",
+      "dateAdded": "2023-03-13",
+      "tags": [
+        "gamedev"
+      ]
+    },
+    {
       "id": "mezha-media-interview",
       "title": "Інтерв'ю для Межа.Медіа",
       "markdownContentUrl": "content.md",
